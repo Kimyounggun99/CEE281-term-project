@@ -13,8 +13,8 @@ Simulation code: `outputs/traffic_project/` (model details: `outputs/traffic_pro
 ## Setup
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>/outputs/traffic_project
+git clone https://github.com/Kimyounggun99/CEE281-term-project.git
+cd CEE281-term-project/outputs/traffic_project
 chmod +x run_project.sh
 ./run_project.sh --setup        # creates .venv and installs requirements.txt
 ```
