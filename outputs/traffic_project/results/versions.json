@@ -1,0 +1,6 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "torch": "2.14.1+cpu",
+  "model_version": "2.1.0"
+}

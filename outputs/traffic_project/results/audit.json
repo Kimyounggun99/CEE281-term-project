@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "metric_records": 75,
+  "full_traces": 15,
+  "checks": [
+    "per-step conservation",
+    "per-lane conservation and storage",
+    "independent delay integration",
+    "storage capacity",
+    "green bounds",
+    "yellow duration",
+    "all-red duration",
+    "saved-input conservation",
+    "IDM speed/acceleration and conflict clearance when present"
+  ]
+}

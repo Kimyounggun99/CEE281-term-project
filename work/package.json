@@ -1,0 +1,8 @@
+{
+  "name": "cee281-replay-checks",
+  "private": true,
+  "description": "Headless browser checks for outputs/traffic_project/results/replay.html",
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

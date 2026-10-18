@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CEE 281 | Signal experiment replay</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f6;color:#20262a;font:14px system-ui;letter-spacing:0}header{padding:20px 24px;border-bottom:1px solid #cdd4d7;background:white}h1{font-size:22px;margin:0 0 8px}main{max-width:1200px;margin:auto;padding:20px}select,button{font:inherit;padding:8px;border:1px solid #abb5ba;border-radius:4px;background:white;color:#20262a}button{width:40px;height:38px}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(230px,1fr);gap:24px;margin-top:20px}canvas{display:block;width:100%;aspect-ratio:1;background:#dce7df}section{min-width:0}table{width:100%;border-collapse:collapse}th,td{text-align:right;padding:12px 6px;border-bottom:1px solid #cdd4d7}th:first-child,td:first-child{text-align:left}.metric{font-size:30px;margin:6px 0 20px}.muted{color:#58686f}input[type=range]{width:100%;accent-color:#007f73}footer{padding:20px 0;font-size:12px;color:#58686f}#phase{font-weight:600;color:#007f73}label{display:flex;gap:8px;align-items:center}#speed{width:90px}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0;color:#44545b;font-size:12px}.key{display:inline-block;width:16px;height:10px;margin-right:5px}.arrival{border:2px solid #008b94}.departure{border:2px solid #9b5ac6}.outbound{background:#aeb7bc;border:1px solid #67737c}@media(max-width:700px){.layout{grid-template-columns:1fr}main{padding:12px}header{padding:16px}h1{font-size:20px}select{max-width:100%}nav label{width:100%}}
+</style>
+<header><h1>CEE 281 / Adaptive Signal Control</h1><span class="muted">IDM vehicle dynamics · 2 inbound lanes per approach · 36 km/h desired speed</span></header>
+<main><nav><label>Scenario <select id="scenario"></select></label><label>Controller <select id="controller"></select></label><button id="play" title="Play or pause" aria-label="Play or pause">▶</button><button id="reset" title="Restart" aria-label="Restart">↺</button><label>Playback <input id="speed" type="range" min="1" max="10" value="1"><output id="speedout">1×</output></label></nav>
+<div class="layout"><section><canvas id="scene" width="960" height="960" aria-label="Animated traffic with loop detector locations"></canvas><div class="legend"><span><i class="key arrival"></i>A: Arrival loop</span><span><i class="key departure"></i>D: Stop-line loop</span><span><i class="key outbound"></i>Departing vehicle</span></div><input id="time" aria-label="Simulation time" type="range" min="0" step="0.1" value="0"><div><span id="clock"></span> · <span id="phase"></span></div></section><section><span class="muted">Total delay, including boundary</span><div class="metric" id="delay"></div><span class="muted">Discharged vehicles</span><div class="metric" id="throughput"></div><table><thead><tr><th>Approach</th><th>Queue</th><th>Outside</th></tr></thead><tbody id="queues"></tbody></table><p class="muted">Queue and outside counts are in vehicles.</p><img src="comparison.png" alt="Mean delay by controller and scenario" style="width:100%;margin-top:16px"></section></div>
+<footer>IDM trajectories in meters and seconds. Delay includes upstream waiting and speed loss before the stop line. Queue = vehicles below 0.5 m/s. Yellow permits committed vehicles; conflicting green waits for intersection clearance. Synthetic demand; no field calibration, turns or pedestrians.</footer></main>
+<script>
+(async()=>{
+const packed=/*PAYLOAD*/"";
+const bytes=Uint8Array.from(atob(packed),c=>c.charCodeAt(0));
+const payload=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+const DATA=payload.traces,MOTION=payload.motion;
+const $=id=>document.getElementById(id),names=['N','S','E','W'];
+const controllers=['fixed','responsive','mpc_transformer'];
+const scenarios=[...new Set(Object.keys(DATA).map(k=>controllers.reduce((s,c)=>s.endsWith('_'+c)?s.slice(0,-c.length-1):s,k)))];
+for(const s of scenarios)$('scenario').add(new Option(s.replaceAll('_',' '),s));
+for(const c of controllers)$('controller').add(new Option(c.replaceAll('_',' '),c));
+let time=0,playing=false,last=0,viewScale=1;
+const zoomLabel=document.createElement('label');zoomLabel.textContent='Zoom ';
+const zoom=document.createElement('input');zoom.type='range';zoom.min=1;zoom.max=4;zoom.step=.1;zoom.value=1;zoom.style.width='90px';zoom.setAttribute('aria-label','Map zoom');zoomLabel.append(zoom);document.querySelector('nav').append(zoomLabel);zoom.oninput=()=>render();
+const colors=['#7cd9c4','#74bfee','#f19baa','#f5d875'];
+// Stop-line origin and downstream unit vector, with right-hand traffic.
+const SCALE=6;
+const paths=[[339,288,0,1],[381,432,0,-1],[432,339,-1,0],[288,381,1,0]];
+const labels=[[170,90],[550,625],[575,180],[145,540]];
+function key(){return $('scenario').value+'_'+$('controller').value}
+function rows(){return DATA[key()]}
+function laneCount(){return rows()[0].lane_queues?.[0].length??1}
+function lanePath(channel){
+ const n=laneCount(),i=Math.floor(channel/n),lane=channel%n,p=[...paths[i]];
+ if(n===2){if(p[3])p[0]=(i===0?328.5:370.5)+21*lane;else p[1]=(i===2?328.5:370.5)+21*lane;}
+ return p;
+}
+function statesAt(t){
+ const motion=MOTION[key()],result=[];
+ for(const [id,channel,start,positions,speeds] of motion.tracks){
+  const f=(t-start)/motion.dt_s;if(f<0||f>positions.length-1)continue;
+  const j=Math.floor(f),next=Math.min(j+1,positions.length-1),alpha=f-j;
+  const front=positions[j]+alpha*(positions[next]-positions[j]);
+  const speed=speeds[j]+alpha*(speeds[next]-speeds[j]);
+  const s=(front-motion.parameters.vehicle_length_m/2)*SCALE;
+  const [x,y,dx,dy]=lanePath(channel);
+  result.push({id,channel,approach:Math.floor(channel/laneCount()),lane:channel%laneCount(),s,front_m:front,speed_mps:speed,x:x+dx*s,y:y+dy*s,outgoing:front>=0});
+ }
+ return result;
+}
+function drawLoop(ctx,i,s,kind,active){
+ const [x,y,dx,dy]=lanePath(i);ctx.save();ctx.translate(x+dx*s,y+dy*s);ctx.rotate(Math.atan2(dy,dx));
+ ctx.fillStyle=active?'#fff3ae':kind==='A'?'#137a8244':'#a56adb44';ctx.fillRect(-5,-7,10,14);
+ ctx.strokeStyle=active?'#ffe777':kind==='A'?'#61e5eb':'#dab2ff';ctx.lineWidth=2;ctx.strokeRect(-5,-7,10,14);ctx.restore();
+ ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.fillStyle='#f9ffff';
+ ctx.font=`bold ${10/viewScale}px system-ui`;
+ const approach=Math.floor(i/laneCount()),lane=i%laneCount();
+ const labelOffset=kind==='D'?85:18;
+ const lx=approach===0?318-labelOffset/viewScale:approach===1?402+labelOffset/viewScale:x+dx*s;
+ const ly=approach===0||approach===1?y+dy*s-6+lane*14/viewScale:approach===2?318-(labelOffset+lane*14)/viewScale:402+(labelOffset+lane*14)/viewScale;
+ ctx.fillStyle=kind==='A'?'#00646c':'#733898';ctx.textAlign=approach===0?'right':approach===1?'left':'center';
+ ctx.fillText(kind+'-'+names[approach]+(lane+1),lx,ly);
+}
+function render(){
+ document.querySelector('header .muted').textContent='IDM · '+laneCount()+' lanes per approach · '+MOTION[key()].parameters.approach_length_m+' m detector spacing · '+rows()[0].lane_storage_capacity+' veh/lane capacity';
+ document.querySelectorAll('th')[1].textContent=laneCount()===2?'Queue L1 / L2':'Queue';
+ document.querySelectorAll('th')[2].textContent=laneCount()===2?'Outside L1 / L2':'Outside';
+ const data=rows();if(!data)return;time=Math.max(0,Math.min(time,data.length));$('time').max=data.length;$('time').value=time;
+ const phaseRow=data[Math.min(Math.floor(time),data.length-1)];
+ const r=time>=1?data[Math.min(Math.floor(time)-1,data.length-1)]:{queues:[0,0,0,0],boundary:[0,0,0,0],throughput:[0,0,0,0],delay_veh_s:[0,0,0,0]};
+ $('clock').textContent=time.toFixed(1)+' s';$('phase').textContent=phaseRow.phase.replace('0:','NS / ').replace('1:','EW / ');
+ $('delay').textContent=(r.delay_veh_s.reduce((a,b)=>a+b,0)/3600).toFixed(2)+' veh h';$('throughput').textContent=r.throughput.reduce((a,b)=>a+b,0);
+ $('queues').innerHTML=names.map((n,i)=>`<tr><td>${n}</td><td title="Lane 1 / Lane 2">${r.lane_queues?r.lane_queues[i].join(' / '):r.queues[i]}</td><td title="Lane 1 / Lane 2">${r.lane_boundary?r.lane_boundary[i].join(' / '):r.boundary[i]}</td></tr>`).join('');
+ const ctx=$('scene').getContext('2d');ctx.setTransform(960/720,0,0,960/720,0,0);
+ ctx.fillStyle='#dce7df';ctx.fillRect(0,0,720,720);
+ const half=72+MOTION[key()].parameters.approach_length_m*SCALE+90;
+ viewScale=720/(2*half)*Number(zoom.value);ctx.translate(360,360);ctx.scale(viewScale,viewScale);ctx.translate(-360,-360);
+ const edge=360-half,end=360+half;
+ ctx.fillStyle='#596266';ctx.fillRect(318,edge,84,2*half);ctx.fillRect(edge,318,2*half,84);
+ ctx.strokeStyle='#f4f4f0';ctx.lineWidth=2;ctx.setLineDash([12,12]);
+ for(const [a,b,c,d] of [[360,edge,360,288],[360,432,360,end],[edge,360,288,360],[432,360,end,360]]){ctx.beginPath();ctx.moveTo(a,b);ctx.lineTo(c,d);ctx.stroke()}ctx.setLineDash([]);
+ if(laneCount()===2){ctx.strokeStyle='#c5cdcf';ctx.lineWidth=1;ctx.setLineDash([6,10]);for(const offset of [339,381])for(const [a,b,c,d] of [[offset,edge,offset,288],[offset,432,offset,end],[edge,offset,288,offset],[432,offset,end,offset]]){ctx.beginPath();ctx.moveTo(a,b);ctx.lineTo(c,d);ctx.stroke()}ctx.setLineDash([]);}
+ const cars=statesAt(time);
+ for(let i=0;i<4;i++){
+  const [x,y,dx,dy]=paths[i];ctx.save();ctx.translate(x,y);ctx.rotate(Math.atan2(dy,dx));ctx.fillStyle='#fff';ctx.fillRect(-1,-21,2,42);ctx.restore();
+  for(let lane=0;lane<laneCount();lane++){
+   const channel=i*laneCount()+lane;
+   const entry=-MOTION[key()].parameters.approach_length_m*SCALE;
+   drawLoop(ctx,channel,entry,'A',cars.some(c=>c.channel===channel&&Math.abs(c.s-entry)<18));
+   drawLoop(ctx,channel,0,'D',cars.some(c=>c.channel===channel&&Math.abs(c.s)<18));
+  }
+  const active=phaseRow.phase===`${i<2?0:1}:green`,yellow=phaseRow.phase===`${i<2?0:1}:yellow`;
+  const sx=x+(dy?(i===0?-70:70):0),sy=y+(dx?(i===2?-70:70):0);ctx.fillStyle='#252f32';ctx.fillRect(sx-12,sy-12,24,24);ctx.fillStyle=active?'#55e493':yellow?'#ffcd4a':'#ff6b72';ctx.beginPath();ctx.arc(sx,sy,8,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#172c2a';ctx.font=`bold ${13/viewScale}px system-ui`;ctx.textAlign='center';
+  const qpos=[[360-145/viewScale,360-100/viewScale],[360+145/viewScale,360+100/viewScale],[360+145/viewScale,360-100/viewScale],[360-145/viewScale,360+100/viewScale]][i];
+  ctx.fillText(names[i]+' '+r.queues[i]+' queued',...qpos);
+  ctx.font=`${11/viewScale}px system-ui`;ctx.fillText((r.lane_queue_length_m?Math.max(...r.lane_queue_length_m[i]).toFixed(0):0)+' / '+MOTION[key()].parameters.approach_length_m+' m',qpos[0],qpos[1]+17/viewScale);
+ }
+ for(const c of cars){
+  const [,,dx,dy]=paths[c.approach];ctx.save();ctx.translate(c.x,c.y);ctx.rotate(Math.atan2(dy,dx));
+  ctx.fillStyle=c.outgoing?'#aeb7bc':colors[c.approach];ctx.strokeStyle='#283238';ctx.lineWidth=1;
+  ctx.beginPath();ctx.roundRect(-13.5,-5.4,27,10.8,2);ctx.fill();ctx.stroke();ctx.fillStyle=c.outgoing?'#677780':'#42636f';ctx.fillRect(4,-4,5,8);ctx.fillStyle='#eff6ea';ctx.fillRect(11,-4,2,3);ctx.fillRect(11,1,2,3);ctx.restore();
+ }
+}
+function pause(){playing=false;$('play').textContent='▶'}
+$('play').onclick=()=>{if(time>=rows().length)time=0;playing=!playing;$('play').textContent=playing?'Ⅱ':'▶';render()};
+$('reset').onclick=()=>{time=0;render()};$('time').oninput=()=>{time=+$('time').value;render()};$('scenario').onchange=render;$('controller').onchange=render;
+$('speed').oninput=()=>$('speedout').textContent=$('speed').value+'×';
+function frame(now){if(last&&playing){time+=Math.min((now-last)/1000,.1)*+$('speed').value;if(time>=rows().length){time=rows().length;pause()}render()}last=now;requestAnimationFrame(frame)}
+render();requestAnimationFrame(frame);
+window.replay={statesAt,seek:t=>{time=t;render()},select:(scenario,controller)=>{$('scenario').value=scenario;$('controller').value=controller;render()},data:DATA,motion:MOTION};
+})().catch(error=>{document.getElementById('phase').textContent='Replay load failed: '+error.message;console.error(error)});
+</script></html>
