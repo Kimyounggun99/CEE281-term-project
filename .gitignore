@@ -5,6 +5,29 @@ __pycache__/
 .venv/
 node_modules/
 
+# LaTeX compilation artifacts (keep source, PDFs, and figures in docs/)
+docs/**/*.aux
+docs/**/*.bbl
+docs/**/*.bcf
+docs/**/*.blg
+docs/**/*.fdb_latexmk
+docs/**/*.fls
+docs/**/*.idx
+docs/**/*.ilg
+docs/**/*.ind
+docs/**/*.lof
+docs/**/*.log
+docs/**/*.lot
+docs/**/*.nav
+docs/**/*.out
+docs/**/*.run.xml
+docs/**/*.snm
+docs/**/*.synctex.gz
+docs/**/*.toc
+docs/**/*.vrb
+docs/**/*.xdv
+docs/**/_minted-*/
+
 # Archive (>100 MB, GitHub limit)
 outputs/traffic_project.zip
 
