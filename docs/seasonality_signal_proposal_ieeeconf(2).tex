@@ -1,0 +1,91 @@
+\documentclass[letterpaper,12pt,conference]{ieeeconf}
+
+\IEEEoverridecommandlockouts
+\overrideIEEEmargins
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx} % A framework figure may be added by the team later.
+
+\title{\LARGE \bf
+Adaptive Traffic Signal Control Under Stochastic Demand Through Forecasting and Optimization}
+
+\author{
+Younggun Kim$^{1}$ and Manuel A. Martinez Garcia$^{1}$%
+\thanks{$^{1}$Department of Civil and Environmental Engineering,
+University of California, Los Angeles, CA, USA.}%
+}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{abstract}
+Traffic demand at signalized intersections is stochastic and exhibits recurring daily and weekly patterns. Fixed-time signal plans may respond poorly to changes in demand, while reactive controllers do not explicitly anticipate future arrivals. We propose an adaptive signal control framework combining Holt--Winters traffic forecasting with rolling-horizon optimization at an isolated intersection. Forecast vehicle arrivals will guide feasible signal phases and green allocations under queue, clearance, and service constraints. We will compare the proposed controller with calibrated fixed-time and queue-responsive baselines under balanced demand, directional shifts, heavy traffic, and detector faults. Our primary goal is to assess when forecast-informed control reduces delay under stochastic demand and when prediction errors offset its benefits.
+\end{abstract}
+
+\section{Introduction}
+Traffic arrivals vary randomly and exhibit systematic temporal patterns. Fixed-time plans accommodate representative demand, whereas actuated or queue-responsive controllers use current observations. Predictive control can anticipate incoming vehicles but depends on forecast reliability. Seasonal forecasting of roadway traffic using Winters-type exponential smoothing has been studied \cite{williams1998,yu2016}, and recent work combines traffic forecasts with constrained signal optimization \cite{atef2026} and studies adaptive model predictive control under unknown demand \cite{li2025}.
+
+This project asks: \emph{When does forecast-informed optimization improve adaptive signal control under stochastic demand, and how robust are its decisions to unexpected changes and imperfect observations?} The intended contribution is a controlled comparison of forecast-informed decisions, not a claim that either Holt--Winters or predictive signal control is new.
+
+\section{Proposed Methodology}
+\subsection{Intersection and Stochastic Demand}
+We consider one four-approach intersection with three entering lanes per approach: left-only, through-only, and shared through/right. No U-turns are permitted. A configurable four-phase plan serves north--south through/right, north--south protected left, east--west through/right, and east--west protected left movements. Right turns occur on green only; pedestrian and right-on-red effects are outside the initial scope. The model includes approach-specific left/through/right probabilities, configurable lane choice for through vehicles, finite lane storage, and stop-line discharge. All controllers observe minimum and maximum green, compatible movements, and yellow/all-red clearances \cite{signalmanual2015}.
+
+
+\subsection{Data Sources and Calibration}
+
+We propose using publicly available intersection traffic data, including historical detector observations from the Utah Department of Transportation's Automated Traffic Signal Performance Measures (ATSPM) system and turning movement counts from the Los Angeles Department of Transportation (LADOT).
+
+Where available, historical approach volumes will be used to estimate recurring demand patterns and calibrate the Holt--Winters forecasting model. Turning movement counts will inform lane-specific demand probabilities, while intersection observations will help calibrate vehicle discharge rates and simulation parameters.
+
+To evaluate the controller, we will generate stochastic vehicle arrivals using demand profiles informed by the historical data. Forecasting models will be calibrated using earlier observations and evaluated on separate periods to avoid data leakage.
+
+\subsection{Holt--Winters Arrival Forecasting}
+We will forecast approach arrival counts using Holt--Winters exponential smoothing, which updates a level, trend, and seasonal component. Seasonal methods have been used for road-traffic flow prediction \cite{williams1998}; double-seasonal Holt--Winters has also been evaluated on California freeway speed data \cite{yu2016}. For a short forecast horizon $1\leq h\leq H<m_s$, an additive seasonal forecast is
+\begin{equation}
+\hat\lambda^{\mathrm{HW}}_{i,t+h}=\max\{0,\ell_{i,t}+hb_{i,t}+s_{i,t+h-m_s}\},
+\label{eq:forecast}
+\end{equation}
+where $\ell$, $b$, and $s$ represent smoothed level, trend, and seasonality of period $m_s$. We will initially fit one within-day seasonal cycle, using weekday/weekend profiles if data allow. Double-seasonal Holt--Winters is a possible extension \cite{gould2008}. In simulation, stochastic arrivals are generated from a separate, unknown-to-controller demand profile; the optimizer uses \emph{forecast-based} arrival scenarios. Forecasts will be updated as detector counts arrive. Historical counts, model parameters, observations, and experiment outcomes will be logged in files for reproducibility.
+
+\subsection{Rolling-Horizon Signal Optimization}
+
+We formulate signal control as a rolling-horizon green-time allocation problem. For each signal phase $p\in\mathcal P$ and future cycle $k$, the decision variable $g_{p,k}$ represents the allocated green duration.
+
+The controller minimizes expected cumulative queueing delay over horizon $H$:
+
+\begin{equation}
+\min_{\mathbf g}
+\frac{1}{S}\sum_{s=1}^{S}
+\sum_{\tau=t}^{t+H-1}
+\sum_{m\in\mathcal M}
+q_{m,\tau}^{(s)}\Delta t,
+\label{eq:mpc}
+\end{equation}
+
+where $S$ is the number of forecast-based demand scenarios and $q_{m,\tau}^{(s)}$ represents the predicted lane-group queue under scenario $s$.
+
+The optimization is subject to queue conservation, phase-dependent vehicle discharge, finite lane storage, and signal timing constraints:
+
+\begin{align}
+g_p^{\min} &\leq g_{p,k}\leq g_p^{\max},\\
+\sum_{p\in\mathcal P}(g_{p,k}+c_p)&=C,
+\end{align}
+
+where $c_p$ represents the clearance interval and $C$ is the fixed signal cycle length.
+
+The four-phase sequence is fixed initially to ensure movement compatibility. Future extensions may consider variable cycle lengths or phase selection.
+
+Holt--Winters forecasts provide predicted arrival rates for the optimization. We will initially solve a deterministic point-forecast formulation ($S=1$) and subsequently investigate stochastic scenario-based optimization ($S>1$).
+
+At each decision interval, only the first feasible control action is implemented before updated observations are collected and the problem is solved again.
+
+\section{Simulation and Evaluation}
+Using the supplied isolated-intersection scaffold, we will compare (i) a justified fixed-time plan, (ii) queue-responsive control, and (iii) Holt--Winters-informed rolling-horizon control. All methods will receive identical demand realizations, initial queues, and analysis horizons. Tests will include balanced demand, directional shifts, a detector fault or measurement delay, and heavy demand producing residual queues. Failed detectors will trigger a documented safe fallback.
+
+We will report total, approach-specific, and movement-specific delay; throughput; maximum/residual queues; unmet demand; and service imbalance. Phase timelines and queue trajectories will confirm feasible transitions and discharge behavior. Paired random-seed experiments will provide confidence intervals for performance differences. An ablation study will compare the optimizer with and without Holt--Winters forecasts and test sensitivity to forecast error and demand variability. These experiments are designed to determine whether statistical forecast accuracy translates into improved control decisions.
+
+\bibliographystyle{IEEEtran}
+\bibliography{citations}
+\end{document}
