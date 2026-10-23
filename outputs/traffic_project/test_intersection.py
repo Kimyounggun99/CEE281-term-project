@@ -93,12 +93,14 @@ class PermissiveLeft(unittest.TestCase):
 
     def test_permissive_left_waits_for_gap(self):
         p=X.Plant(self.c,self.lay); fya=(('G','G','R','R'),('R','R','R','R'),(True,True,False,False))
-        p.add(self.counts(**{str(self.left):(1,1)}),0); self.drive(p,0,6,(('R','G','R','R'),('R','R','R','R'),(True,False,False,False)))
-        # Opposing (S) through traffic arriving continuously: the turner must hold at the stop line.
+        p.add(self.counts(**{str(self.left):(1,1)}),0)
+        # Opposing (S) through traffic arriving continuously, starting before the turner can reach the line: it must hold.
+        for t in range(6):
+            p.add(self.counts(**{str(self.through_s):(0,1)}),t); self.drive(p,t,t+1,(('R','G','R','R'),('R','R','R','R'),(True,False,False,False)))
         for t in range(6,30):
             p.add(self.counts(**{str(self.through_s):(0,1)}),t); self.drive(p,t,t+1,fya)
         self.assertEqual(p.served[self.left,1],0)
-        # A single lane admits the 24 opposing vehicles more slowly than they were offered.
+        # A single lane admits the 30 opposing vehicles more slowly than they were offered.
         self.drive(p,30,180,fya)
         self.assertEqual(p.served[self.left,1],1); self.assertEqual(p.red_crossings,0)
         self.assertGreater(p.min_pet(),self.lay.g['gap_safety_s'])

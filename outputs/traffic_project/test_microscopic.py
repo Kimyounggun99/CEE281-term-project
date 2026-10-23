@@ -14,17 +14,19 @@ class IDMVerification(unittest.TestCase):
         p=Plant(C,detailed=True);a=np.zeros((4,2),int);a[0,0]=1;p.add(a,0)
         self.drive(p,0,15,'0:green')
         track=p.tracks[0]
-        self.assertTrue(all(abs(v-10)<1e-5 for v in track[4]))
-        self.assertAlmostEqual(p.departures[0]['departure_time_s'],4.05,places=5)
+        v0=p.p['desired_speed_mps']
+        self.assertTrue(all(abs(v-v0)<1e-5 for v in track[4]))
+        self.assertAlmostEqual(p.departures[0]['departure_time_s'],-p.entry_x/v0,places=5)
 
     def test_red_stop_and_bounded_restart(self):
         p=Plant(C,detailed=True);a=np.zeros((4,2),int);a[0,0]=1;p.add(a,0)
         self.drive(p,0,30,'1:green')
         v=p.cars[0][0];self.assertLess(v.x,0);self.assertLess(v.v,.01)
-        self.assertAlmostEqual(v.x,-2,delta=.15)
+        # Braking from 15 m/s, IDM settles slightly inside s0=2 m (about 1.8 m), still behind the line.
+        self.assertAlmostEqual(v.x,-2,delta=.25)
         self.drive(p,30,45,'0:green')
-        self.assertGreater(p.served[0,0],0);self.assertLessEqual(p.max_acc,1.2)
-        self.assertLess(p.departures[0]['speed_mps'],10)
+        self.assertGreater(p.served[0,0],0);self.assertLessEqual(p.max_acc,p.p['acceleration_mps2'])
+        self.assertLess(p.departures[0]['speed_mps'],p.p['desired_speed_mps'])
         self.assertEqual(p.guards,0)
 
     def test_closed_loop_accounting(self):
@@ -34,7 +36,7 @@ class IDMVerification(unittest.TestCase):
         self.assertEqual(m['collision_guard_corrections'],0)
         self.assertLess(m['delay_accounting_error'],1e-5)
         self.assertGreater(m['min_gap_m'],0)
-        self.assertLessEqual(m['max_speed_mps'],10.00001)
+        self.assertLessEqual(m['max_speed_mps'],15.00001)
 
     def test_step_sensitivity(self):
         a=np.random.default_rng(12).poisson(.18,size=(120,4,2))
@@ -56,9 +58,9 @@ class IDMVerification(unittest.TestCase):
         a=np.zeros((4,2),int);a[0,:]=80;p.add(a,0)
         self.drive(p,0,200,'1:green')
         inventory,queue,boundary=p.counts()
-        self.assertEqual(p.capacity,30)
-        self.assertGreaterEqual(queue[0,0],28)
-        self.assertTrue(np.all(inventory<=30))
+        self.assertEqual(p.capacity,28)  # 200 m // (5 m car + 2 m s0)
+        self.assertGreaterEqual(queue[0,0],26)
+        self.assertTrue(np.all(inventory<=28))
         self.assertLessEqual(p.queue_lengths().max(),200.)
         self.assertTrue(all(v.x-p.p['vehicle_length_m']>=-200 for lane in p.cars for v in lane))
         self.assertEqual(int((inventory+boundary+p.served).sum()),160)
