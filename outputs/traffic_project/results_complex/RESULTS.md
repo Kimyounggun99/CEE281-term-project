@@ -17,12 +17,12 @@ Signal: NEMA dual-ring, lead-lead lefts, barrier between the primary and seconda
 
 | Scenario | fixed | responsive | mpc_transformer |
 |---|---:|---:|---:|
-| balanced | 49.61 | 50.87 | 45.13 |
-| directional_shift | 62.65 | 60.95 | 56.09 |
-| left_surge | 51.68 | 52.95 | 47.17 |
-| detector_fault | 49.61 | 50.19 | 45.23 |
-| delayed | 49.61 | 49.61 | 49.61 |
-| heavy | 201.51 | 195.65 | 192.46 |
+| balanced | 48.04 | 44.25 | 39.70 |
+| directional_shift | 61.52 | 53.28 | 48.89 |
+| left_surge | 50.19 | 46.01 | 41.70 |
+| detector_fault | 48.04 | 44.56 | 39.86 |
+| delayed | 48.04 | 48.04 | 48.04 |
+| heavy | 198.84 | 185.65 | 178.26 |
 
 ### Mean time loss per offered vehicle [s/veh]: left / through / right
 
@@ -30,63 +30,63 @@ Time loss includes outside waiting and stops at the analysis horizon. Unserved v
 
 | Scenario | fixed | responsive | mpc_transformer |
 |---|---|---|---|
-| balanced | 152 / 162 / 152 | 98 / 175 / 157 | 210 / 136 / 138 |
-| directional_shift | 162 / 174 / 163 | 101 / 177 / 172 | 217 / 144 / 148 |
-| left_surge | 168 / 162 / 152 | 112 / 178 / 158 | 218 / 136 / 130 |
-| detector_fault | 152 / 162 / 152 | 111 / 171 / 154 | 196 / 139 / 138 |
-| delayed | 152 / 162 / 152 | 152 / 162 / 152 | 152 / 162 / 152 |
-| heavy | 313 / 313 / 298 | 237 / 312 / 308 | 355 / 290 / 284 |
+| balanced | 141 / 157 / 149 | 92 / 152 / 131 | 229 / 114 / 111 |
+| directional_shift | 153 / 171 / 162 | 94 / 154 / 151 | 243 / 118 / 120 |
+| left_surge | 159 / 158 / 148 | 107 / 153 / 134 | 227 / 114 / 106 |
+| detector_fault | 141 / 157 / 149 | 107 / 151 / 130 | 217 / 116 / 111 |
+| delayed | 141 / 157 / 149 | 141 / 157 / 149 | 141 / 157 / 149 |
+| heavy | 302 / 309 / 294 | 220 / 296 / 292 | 380 / 261 / 263 |
 
 ### Mean stop-line throughput / unserved at horizon [veh]
 
 | Scenario | fixed | responsive | mpc_transformer |
 |---|---|---|---|
-| balanced | 748 / 367 | 720 / 395 | 761 / 354 |
-| directional_shift | 744 / 571 | 760 / 554 | 795 / 519 |
-| left_surge | 744 / 401 | 716 / 429 | 762 / 383 |
-| detector_fault | 748 / 367 | 721 / 394 | 771 / 345 |
-| delayed | 748 / 367 | 748 / 367 | 748 / 367 |
-| heavy | 761 / 1568 | 790 / 1539 | 822 / 1507 |
+| balanced | 768 / 347 | 766 / 349 | 808 / 307 |
+| directional_shift | 759 / 555 | 830 / 484 | 860 / 454 |
+| left_surge | 764 / 381 | 774 / 371 | 808 / 337 |
+| detector_fault | 768 / 347 | 760 / 355 | 817 / 298 |
+| delayed | 768 / 347 | 768 / 347 | 768 / 347 |
+| heavy | 778 / 1550 | 868 / 1461 | 936 / 1392 |
 
 ### Paired total-delay difference vs fixed [veh h], 95% Student-t CI
 
 | Scenario | Controller | Mean | 95% CI |
 |---|---|---:|---|
-| balanced | responsive | 1.25 | [-1.79, 4.30] |
-| balanced | mpc_transformer | -4.48 | [-8.04, -0.93] |
-| directional_shift | responsive | -1.69 | [-4.88, 1.50] |
-| directional_shift | mpc_transformer | -6.56 | [-9.74, -3.38] |
-| left_surge | responsive | 1.27 | [-1.70, 4.23] |
-| left_surge | mpc_transformer | -4.51 | [-7.74, -1.28] |
-| detector_fault | responsive | 0.57 | [-1.67, 2.82] |
-| detector_fault | mpc_transformer | -4.39 | [-7.79, -0.98] |
+| balanced | responsive | -3.78 | [-8.11, 0.54] |
+| balanced | mpc_transformer | -8.34 | [-12.97, -3.71] |
+| directional_shift | responsive | -8.24 | [-13.49, -2.99] |
+| directional_shift | mpc_transformer | -12.62 | [-17.22, -8.03] |
+| left_surge | responsive | -4.18 | [-9.63, 1.26] |
+| left_surge | mpc_transformer | -8.49 | [-13.12, -3.86] |
+| detector_fault | responsive | -3.48 | [-7.84, 0.88] |
+| detector_fault | mpc_transformer | -8.18 | [-11.96, -4.39] |
 | delayed | responsive | 0.00 | [0.00, 0.00] |
 | delayed | mpc_transformer | 0.00 | [0.00, 0.00] |
-| heavy | responsive | -5.86 | [-7.47, -4.25] |
-| heavy | mpc_transformer | -9.05 | [-10.18, -7.93] |
+| heavy | responsive | -13.18 | [-19.00, -7.36] |
+| heavy | mpc_transformer | -20.57 | [-23.87, -17.27] |
 
 ### Left-turn signal usage (mean per run)
 
 | Scenario | Controller | Arrow green [s] | Arrow with same-approach through [s] | Dual arrows [s] | Protected / permissive lefts | Left phases skipped | Min permissive PET [s] |
 |---|---|---:|---:|---:|---|---:|---:|
-| balanced | fixed | 246 | 0 | 123 | 79 / 13 | 0.0 | 2.54 |
-| balanced | responsive | 306 | 35 | 124 | 92 / 18 | 0.6 | 2.01 |
-| balanced | mpc_transformer | 157 | 4 | 72 | 56 / 21 | 0.0 | 1.71 |
-| directional_shift | fixed | 243 | 0 | 121 | 79 / 14 | 0.0 | 2.54 |
-| directional_shift | responsive | 329 | 28 | 143 | 104 / 20 | 0.6 | 2.67 |
-| directional_shift | mpc_transformer | 146 | 0 | 72 | 53 / 20 | 0.0 | 2.68 |
-| left_surge | fixed | 247 | 0 | 124 | 80 / 13 | 0.0 | 2.54 |
-| left_surge | responsive | 331 | 45 | 130 | 104 / 18 | 0.6 | 2.67 |
-| left_surge | mpc_transformer | 149 | 5 | 68 | 53 / 21 | 0.0 | 1.71 |
-| detector_fault | fixed | 246 | 0 | 123 | 79 / 13 | 0.0 | 2.54 |
-| detector_fault | responsive | 297 | 38 | 122 | 92 / 19 | 1.0 | 2.68 |
-| detector_fault | mpc_transformer | 176 | 0 | 87 | 60 / 20 | 0.0 | 2.74 |
-| delayed | fixed | 246 | 0 | 123 | 79 / 13 | 0.0 | 2.54 |
-| delayed | responsive | 246 | 0 | 123 | 79 / 13 | 0.0 | 2.54 |
-| delayed | mpc_transformer | 246 | 0 | 123 | 79 / 13 | 0.0 | 2.54 |
-| heavy | fixed | 245 | 0 | 122 | 84 / 15 | 0.0 | 2.28 |
-| heavy | responsive | 380 | 0 | 190 | 131 / 21 | 0.0 | 1.92 |
-| heavy | mpc_transformer | 145 | 0 | 73 | 54 / 20 | 0.0 | 1.71 |
+| balanced | fixed | 223 | 0 | 112 | 68 / 30 | 0.0 | 2.25 |
+| balanced | responsive | 294 | 36 | 119 | 89 / 25 | 1.0 | 1.04 |
+| balanced | mpc_transformer | 153 | 14 | 64 | 46 / 26 | 0.0 | 1.34 |
+| directional_shift | fixed | 223 | 0 | 112 | 69 / 30 | 0.0 | 2.25 |
+| directional_shift | responsive | 326 | 32 | 138 | 106 / 23 | 0.8 | 1.03 |
+| directional_shift | mpc_transformer | 138 | 3 | 66 | 40 / 25 | 0.0 | 1.34 |
+| left_surge | fixed | 224 | 0 | 112 | 69 / 30 | 0.0 | 2.25 |
+| left_surge | responsive | 319 | 47 | 123 | 101 / 24 | 0.8 | 1.04 |
+| left_surge | mpc_transformer | 163 | 15 | 68 | 50 / 25 | 0.0 | 1.34 |
+| detector_fault | fixed | 223 | 0 | 112 | 68 / 30 | 0.0 | 2.25 |
+| detector_fault | responsive | 281 | 34 | 114 | 87 / 25 | 0.8 | 1.02 |
+| detector_fault | mpc_transformer | 156 | 4 | 74 | 47 / 26 | 0.0 | 1.34 |
+| delayed | fixed | 223 | 0 | 112 | 68 / 30 | 0.0 | 2.25 |
+| delayed | responsive | 223 | 0 | 112 | 68 / 30 | 0.0 | 2.25 |
+| delayed | mpc_transformer | 223 | 0 | 112 | 68 / 30 | 0.0 | 2.25 |
+| heavy | fixed | 232 | 0 | 116 | 77 / 32 | 0.0 | 3.58 |
+| heavy | responsive | 382 | 0 | 190 | 136 / 24 | 0.0 | 3.70 |
+| heavy | mpc_transformer | 124 | 0 | 62 | 34 / 27 | 0.0 | 3.17 |
 
 ## Left-turn mode comparison (primary road)
 
@@ -94,15 +94,15 @@ Same demand tapes for every mode. Total delay [veh h] / mean left delay [s/veh] 
 
 | Scenario | Mode | fixed | responsive | mpc_transformer |
 |---|---|---|---|---|
-| balanced | permissive | 41.41 / 357 / 110 | 40.51 / 378 / 116 | 39.68 / 375 / 115 |
-| balanced | protected | 48.60 / 162 / 47 | 47.97 / 103 / 30 | 41.43 / 234 / 71 |
-| balanced | protected_permissive | 49.61 / 152 / 47 | 50.87 / 98 / 30 | 45.13 / 210 / 62 |
-| left_surge | permissive | 43.83 / 327 / 149 | 42.73 / 343 / 155 | 41.64 / 341 / 154 |
-| left_surge | protected | 50.72 / 177 / 86 | 50.14 / 119 / 61 | 43.46 / 237 / 113 |
-| left_surge | protected_permissive | 51.68 / 168 / 85 | 52.95 / 112 / 57 | 47.17 / 218 / 105 |
-| heavy | permissive | 191.47 / 428 / 245 | 182.95 / 436 / 250 | 181.65 / 431 / 246 |
-| heavy | protected | 200.80 / 314 / 176 | 191.74 / 242 / 134 | 186.89 / 376 / 216 |
-| heavy | protected_permissive | 201.51 / 313 / 176 | 195.65 / 237 / 123 | 192.46 / 355 / 201 |
+| balanced | permissive | 38.78 / 333 / 102 | 36.91 / 354 / 107 | 34.91 / 353 / 109 |
+| balanced | protected | 44.45 / 158 / 47 | 41.80 / 93 / 26 | 35.79 / 267 / 81 |
+| balanced | protected_permissive | 48.04 / 141 / 42 | 44.25 / 92 / 26 | 39.70 / 229 / 67 |
+| left_surge | permissive | 41.23 / 309 / 141 | 39.00 / 330 / 150 | 37.16 / 326 / 148 |
+| left_surge | protected | 46.65 / 173 / 86 | 43.77 / 109 / 55 | 37.70 / 254 / 119 |
+| left_surge | protected_permissive | 50.19 / 159 / 80 | 46.01 / 107 / 53 | 41.70 / 227 / 103 |
+| heavy | permissive | 187.48 / 412 / 236 | 170.67 / 425 / 243 | 166.63 / 430 / 246 |
+| heavy | protected | 193.68 / 315 / 175 | 180.79 / 232 / 121 | 170.02 / 408 / 233 |
+| heavy | protected_permissive | 198.84 / 302 / 167 | 185.65 / 220 / 115 | 178.26 / 380 / 214 |
 
 ## 60 s forecast count MAE [veh/approach/horizon]
 
@@ -117,8 +117,8 @@ Same demand tapes for every mode. Total delay [veh h] / mean left delay [s/veh] 
 
 ## Verification over all runs
 
-Conservation error: 0 veh. Red-light entries: 0. Collision-guard corrections: 0. Minimum net gap: 1.993 m. Max delay-accounting error: 5.50e-07 veh s.
-Smallest post-encroachment time between a permissive left and opposing through/right traffic: 1.27 s.
+Conservation error: 0 veh. Red-light entries: 0. Collision-guard corrections: 0. Minimum net gap: 1.785 m. Max delay-accounting error: 6.89e-07 veh s.
+Smallest post-encroachment time between a permissive left and opposing through/right traffic: 1.02 s.
 
 ## Saved interfaces
 

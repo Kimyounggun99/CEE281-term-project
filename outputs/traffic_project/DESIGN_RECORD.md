@@ -1,5 +1,19 @@
 # Evolving design record / v1.0.0
 
+## v3.2: city-traffic IDM parameters
+
+The IDM plant (`microscopic.py`, `intersection.py`) now uses the city-traffic column of Treiber & Kesting, *Traffic Flow Dynamics*, Table 11.2: v0 = 54 km/h (15 m/s), T = 1.0 s, s0 = 2 m, δ = 4 (now the explicit `acceleration_exponent`), a = 1.0 m/s², b = 1.5 m/s², vehicle length 5 m. The equation and ballistic 0.2 s integration are unchanged. With 5 m vehicles, a 200 m approach stores floor(200/7) = 28 vehicles per lane, down from 30.
+
+Three behaviors had depended on the old, slower parameters and were corrected:
+
+- **Yellow stop-or-go.** Commitment previously used b: a vehicle committed if it could not stop at b. At 15 m/s with b = 1.5 m/s², that is a 75 m zone, which takes about 5 s to cover, longer than the 3 s yellow. Committed vehicles then met the red short of the line. The decision now uses `yellow_decision_braking_mps2` = 3.0 m/s², the ITE yellow-interval deceleration, so the commitment zone v²/6 ≤ 37.5 m is cleared within the yellow. Vehicles outside it brake with IDM, and that braking never reached the 6 m/s² limit in the tests.
+- **Boundary admission speed.** A vehicle entered at v0 whenever the gap exceeded s0 + v0·T, regardless of the leader's speed. Behind a stopped queue at 15 m/s, stopping then needed more than the 6 m/s² limit, and the positional guard fired. A new vehicle now enters at the largest speed whose IDM desired gap s*(v, v - v_lead) fits the available gap. This is one smooth rule, and the entrant starts at an IDM acceleration of -a or higher.
+- **Permissive gap check against a yellow.** The turner's check skipped opposing vehicles not yet flagged `committed`. On the first yellow step, the opposing lane may not have made its decision yet, so this skipped vehicles that were about to commit, and the test layouts recorded a 0.27 s PET. An uncommitted opposing vehicle is now ignored only if it can stop at the yellow-decision deceleration.
+
+- **Gap-acceptance travel times.** `travel_time` previously assumed constant acceleration a up to v0, while the plant accelerates at a(1-(v/v0)^δ). At 54 km/h this underestimated a moving turner's clearing time by about 0.1 s. In the full study, one turner (seed 104) cleared with a PET of 0.965 s, below the 1 s margin. `travel_time` now follows the IDM free-road equation. It integrates the trajectory from rest once, and because the equation does not depend on time, that trajectory gives the time from any starting speed. Opposing vehicles' arrival estimates remain an upper bound on their speed.
+
+The permissive-left hold test starts the opposing stream before the turner arrives. At 54 km/h the turner otherwise reaches the line first and correctly accepts a 2.3 s-PET lag.
+
 ## v3.1: shared through/right lanes and saved movement interfaces
 
 Primary roads now use L/T/TR and secondary roads LT/TR, as requested. Existing ring sequences, left indications, yellow commitment and IDM dynamics are retained. Right turns use the through ball and shared-lane FIFO, with no right turn on red. Permissive lefts yield to opposing rights as well as through vehicles; the MPC's opposing-flow weights include both. Right-turn occupants participate in the existing all-red interlock. The replay uses a separate right-turn curve and the correct outbound compass leg.
