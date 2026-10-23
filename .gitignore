@@ -37,3 +37,14 @@ outputs/traffic_project/results/*_motion.json
 outputs/traffic_project/results/*_trace.json
 outputs/traffic_project/results/replay_data.json
 outputs/traffic_project/results/replay.html
+outputs/traffic_project/results_complex_quick/
+outputs/traffic_project/results_complex/*_trace.json
+outputs/traffic_project/results_complex/replay_data.json
+outputs/traffic_project/results_complex/replay_motion.json
+outputs/traffic_project/results_complex/replay.html
+outputs/traffic_project/results_complex/*_seed*_vehicles.csv
+outputs/traffic_project/results_complex/*_seed*_movement_metrics.csv
+outputs/traffic_project/results_complex/*_seed*_conflict_intervals.csv
+
+# Personal scratch notes
+todo.txt

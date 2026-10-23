@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CEE 281 | Complex intersection replay</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f6;color:#20262a;font:14px system-ui;letter-spacing:0}
+header{padding:18px 24px;border-bottom:1px solid #cdd4d7;background:#fff}h1{font-size:21px;margin:0 0 4px}.muted{color:#5b666b}
+main{padding:16px 24px;max-width:1280px;margin:auto}nav{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+select,button,input{font:inherit}button{min-width:36px;padding:4px 10px;border:1px solid #9aa6ab;background:#fff;border-radius:4px;cursor:pointer}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px}canvas{width:100%;height:auto;background:#dce7df;border:1px solid #c7d0d3;border-radius:4px}
+aside{background:#fff;border:1px solid #cdd4d7;border-radius:4px;padding:14px}table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:5px 4px;border-bottom:1px solid #e3e7e9;text-align:right}th:first-child,td:first-child{text-align:left}
+.stat{display:flex;justify-content:space-between;padding:4px 0}.stat b{font-variant-numeric:tabular-nums}
+.sig{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:2px}
+footer{margin-top:14px;color:#5b666b;font-size:12px;line-height:1.5}
+@media (max-width:860px){.layout{grid-template-columns:1fr}main{padding:12px 16px}}
+</style>
+<header><h1>CEE 281 / Primary-secondary intersection with left and right turns</h1><span class="muted" id="sub">IDM vehicle dynamics · NEMA dual-ring, lead-lead lefts</span></header>
+<main><nav>
+<label>Primary left mode <select id="mode"></select></label><label>Scenario <select id="scenario"></select></label><label>Controller <select id="controller"></select></label>
+<button id="play" aria-label="Play or pause">▶</button><button id="reset" aria-label="Restart">↺</button>
+<input id="time" type="range" min="0" step="0.1" value="0" style="width:220px" aria-label="Time">
+<label>Speed <input id="speed" type="range" min="1" max="20" value="1" style="width:80px"><span id="speedout">1×</span></label>
+<label>Zoom <input id="zoom" type="range" min="1" max="4" step="0.1" value="1.6" style="width:80px"></label></nav>
+<div class="layout"><section><canvas id="scene" width="960" height="960" aria-label="Animated intersection traffic"></canvas></section>
+<aside><div class="stat"><span>Time</span><b id="clock">0 s</b></div><div class="stat"><span>Ring phases</span><b id="phase"></b></div>
+<div class="stat"><span>Total delay</span><b id="delay"></b></div><div class="stat"><span>Throughput (left / right)</span><b id="throughput"></b></div>
+<table><thead><tr><th>Approach</th><th>Signal</th><th>Queue by lane</th><th>Outside</th></tr></thead><tbody id="queues"></tbody></table>
+<footer>Ball = through/right indication, arrow = left-turn arrow; flashing amber = permissive left, tied to opposing through green. White chevrons identify turners. Vehicles turn gray after crossing the stop line. Lanes run from median to curb: L = left only, T = straight only, LT = left/straight, TR = straight/right. Right turns follow the ball, with no right turn on red; permissive lefts yield to opposing through and right traffic. Curves illustrate configured path lengths; downstream receiving queues are not simulated.</footer></aside></div></main>
+<script>
+(async()=>{
+const packed=/*PAYLOAD*/"";
+const bytes=Uint8Array.from(atob(packed),c=>c.charCodeAt(0));
+const payload=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+const DATA=payload.traces,MOTION=payload.motion,$=id=>document.getElementById(id),names=['N','S','E','W'];
+const controllers=['fixed','responsive','mpc_transformer'],modes=['permissive','protected','protected_permissive'];
+const keys=Object.keys(DATA).map(k=>{const m=modes.slice().sort((a,b)=>b.length-a.length).find(m=>k.startsWith(m+'_'));const c=controllers.find(c=>k.endsWith('_'+c));return {k,m,c,s:k.slice(m.length+1,-c.length-1)}});
+for(const m of modes.filter(m=>keys.some(x=>x.m===m)))$('mode').add(new Option(m.replaceAll('_',' '),m));
+for(const c of controllers)$('controller').add(new Option(c.replaceAll('_',' '),c));
+function fillScenarios(){const keep=$('scenario').value;$('scenario').innerHTML='';for(const s of [...new Set(keys.filter(x=>x.m===$('mode').value).map(x=>x.s))])$('scenario').add(new Option(s.replaceAll('_',' '),s));if([...$('scenario').options].some(o=>o.value===keep))$('scenario').value=keep}
+$('mode').value=keys.some(x=>x.m==='protected_permissive')?'protected_permissive':$('mode').value;fillScenarios();
+const colors=['#7cd9c4','#74bfee','#f19baa','#f5d875'],SCALE=6,LANE=21,C=360;
+const DIR=[[0,1],[0,-1],[-1,0],[1,0]];
+let time=0,playing=false,last=0,view=1;
+const key=()=>`${$('mode').value}_${$('scenario').value}_${$('controller').value}`;
+const rows=()=>DATA[key()],motion=()=>MOTION[key()];
+function geom(){
+ const m=motion(),half=m.parameters.intersection_length_m/2*SCALE,lanes=[0,1,2,3].map(a=>m.layout.channels.filter(c=>c[0]===names[a]));
+ const chans=m.layout.channels.map(([n,lane,kind])=>{const a=names.indexOf(n),[dx,dy]=DIR[a],rx=-dy,ry=dx,off=(lane+.5)*LANE;return {a,lane,kind,dx,dy,rx,ry,x0:C-dx*half+rx*off,y0:C-dy*half+ry*off}});
+ return {half,lanes,chans,left:m.layout.left_path_m*SCALE,right:(m.layout.right_path_m||12)*SCALE};
+}
+function bezier(ch,g,mov=1){
+ const hx=mov===1?ch.dy:-ch.dy,hy=mov===1?-ch.dx:ch.dx,rx=-hy,ry=hx;
+ const dest=names.indexOf(hx===1?'E':hx===-1?'W':hy===1?'S':'N'),off=mov===1?LANE/2:(g.lanes[dest].length-.5)*LANE;
+ const x1=C+hx*g.half+rx*off,y1=C+hy*g.half+ry*off;
+ const cx=ch.dx?x1:ch.x0,cy=ch.dx?ch.y0:y1;return {x0:ch.x0,y0:ch.y0,cx,cy,x1,y1,hx,hy};
+}
+function onCurve(b,f){const u=1-f;return [u*u*b.x0+2*u*f*b.cx+f*f*b.x1,u*u*b.y0+2*u*f*b.cy+f*f*b.y1,2*u*(b.cx-b.x0)+2*f*(b.x1-b.cx),2*u*(b.cy-b.y0)+2*f*(b.y1-b.cy)]}
+function place(ch,mov,s,g){
+ if(s<=0||!mov)return [ch.x0+ch.dx*s,ch.y0+ch.dy*s,ch.dx,ch.dy];
+ const b=bezier(ch,g,mov),length=mov===1?g.left:g.right;if(s>=length)return [b.x1+b.hx*(s-length),b.y1+b.hy*(s-length),b.hx,b.hy];
+ const p=onCurve(b,s/length);return p;
+}
+function statesAt(t,g){
+ const m=motion(),out=[];
+ for(const [id,channel,start,xs,vs,born,mov] of m.tracks){
+  const f=(t-start)/m.dt_s;if(f<0||f>xs.length-1)continue;const j=Math.floor(f),n=Math.min(j+1,xs.length-1),al=f-j;
+  const front=xs[j]+al*(xs[n]-xs[j]),s=(front-m.parameters.vehicle_length_m/2)*SCALE,ch=g.chans[channel];
+  const [x,y,hx,hy]=place(ch,mov,s,g);out.push({id,channel,a:ch.a,mov,x,y,ang:Math.atan2(hy,hx),outgoing:front>=0});
+ }
+ return out;
+}
+function lamp(ctx,x,y,state,arrow,flash){
+ ctx.fillStyle=flash?(Math.floor(time*2)%2===0?'#ffb020':'#4a3a1a'):state==='G'?'#55e493':state==='Y'?'#ffcd4a':'#ff6b72';
+ ctx.beginPath();ctx.arc(x,y,7,0,7);ctx.fill();
+ if(arrow){ctx.fillStyle='#172022';ctx.font='bold 11px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('←',x,y+.5)}
+}
+function render(){
+ const data=rows();if(!data)return;const g=geom(),m=motion();
+ time=Math.max(0,Math.min(time,data.length));$('time').max=data.length;$('time').value=time;
+ const ph=data[Math.min(Math.floor(time),data.length-1)],r=time>=1?data[Math.min(Math.floor(time)-1,data.length-1)]:null;
+ $('sub').textContent=`IDM · ${m.parameters.approach_length_m} m approaches · lanes ${names.map((n,a)=>n+':'+g.lanes[a].map(c=>c[2]).join('|')).join(' ')} · left modes ${names.map((n,a)=>n+':'+m.layout.modes[a].replace('protected_permissive','prot+perm')).join(' ')}`;
+ $('clock').textContent=time.toFixed(1)+' s';$('phase').textContent=ph.phase.replace(/^0:/,'Primary · ').replace(/^1:/,'Secondary · ');
+ $('delay').textContent=r?(r.delay_veh_s.reduce((a,b)=>a+b,0)/3600).toFixed(2)+' veh h':'0';
+ $('throughput').textContent=r?`${r.throughput.reduce((a,b)=>a+b,0)} (${r.left_throughput.reduce((a,b)=>a+b,0)} / ${(r.right_throughput||[]).reduce((a,b)=>a+b,0)})`:'0';
+ const dot=s=>`<span class="sig" style="background:${s==='G'?'#2e9e5b':s==='Y'?'#e3b505':'#d24a55'}"></span>`;
+ $('queues').innerHTML=names.map((n,a)=>{const chs=g.chans.map((c,i)=>[c,i]).filter(([c])=>c.a===a);
+  return `<tr><td>${n}</td><td>${dot(ph.through[a])}${chs.some(([c])=>c.kind==='L')?(ph.permissive[a]==='F'?'<span class="sig" style="background:#ffb020"></span>FYA':dot(ph.arrow[a])+'←'):''}</td><td>${r?chs.map(([c,i])=>c.kind+' '+r.lane_queues[i]).join(' · '):''}</td><td>${r?chs.reduce((s,[c,i])=>s+r.lane_boundary[i],0):0}</td></tr>`}).join('');
+ const ctx=$('scene').getContext('2d');ctx.setTransform(960/720,0,0,960/720,0,0);ctx.fillStyle='#dce7df';ctx.fillRect(0,0,720,720);
+ const reach=g.half+m.parameters.approach_length_m*SCALE+60;view=720/(2*reach)*Number($('zoom').value);
+ ctx.translate(C,C);ctx.scale(view,view);ctx.translate(-C,-C);
+ const wNS=Math.max(g.lanes[0].length,g.lanes[1].length)*LANE,wEW=Math.max(g.lanes[2].length,g.lanes[3].length)*LANE;
+ ctx.fillStyle='#596266';ctx.fillRect(C-wNS,C-reach,2*wNS,2*reach);ctx.fillRect(C-reach,C-wEW,2*reach,2*wEW);
+ ctx.strokeStyle='#e9d36a';ctx.lineWidth=2;
+ for(const [a,b,c,d] of [[C,C-reach,C,C-g.half],[C,C+g.half,C,C+reach],[C-reach,C,C-g.half,C],[C+g.half,C,C+reach,C]]){ctx.beginPath();ctx.moveTo(a,b);ctx.lineTo(c,d);ctx.stroke()}
+ ctx.strokeStyle='#d7dde0';ctx.lineWidth=1;ctx.setLineDash([8,10]);
+ for(const ch of g.chans){if(ch.lane===0)continue;const ox=ch.x0-ch.rx*LANE/2,oy=ch.y0-ch.ry*LANE/2;ctx.beginPath();ctx.moveTo(ox-ch.dx*(reach-g.half),oy-ch.dy*(reach-g.half));ctx.lineTo(ox,oy);ctx.stroke()}
+ ctx.setLineDash([]);
+ for(const ch of g.chans){
+  ctx.save();ctx.translate(ch.x0,ch.y0);ctx.rotate(Math.atan2(ch.dy,ch.dx));ctx.fillStyle='#fff';ctx.fillRect(-1,-LANE/2,2,LANE);
+  ctx.fillStyle='#eef2f3';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.rotate(Math.PI/2);ctx.fillText(ch.kind,0,40);ctx.restore();
+  if(ch.kind.includes('L')){ctx.strokeStyle='#ffffff22';ctx.lineWidth=LANE*.8;const b=bezier(ch,g);ctx.beginPath();ctx.moveTo(b.x0,b.y0);ctx.quadraticCurveTo(b.cx,b.cy,b.x1,b.y1);ctx.stroke()}
+  if(ch.kind.includes('R')){ctx.strokeStyle='#ffffff22';ctx.lineWidth=LANE*.8;const b=bezier(ch,g,2);ctx.beginPath();ctx.moveTo(b.x0,b.y0);ctx.quadraticCurveTo(b.cx,b.cy,b.x1,b.y1);ctx.stroke()}
+ }
+ for(let a=0;a<4;a++){
+  const ch=g.chans.find(c=>c.a===a&&c.lane===0),[dx,dy]=DIR[a],hasLeft=g.chans.some(c=>c.a===a&&c.kind==='L');
+  const x=ch.x0-dx*26-ch.rx*24,y=ch.y0-dy*26-ch.ry*24;ctx.fillStyle='#1f282b';ctx.fillRect(x-11,y-11,hasLeft?44:22,22);
+  lamp(ctx,x,y,ph.through[a],false,false);if(hasLeft)lamp(ctx,x+22,y,ph.arrow[a],true,ph.permissive[a]==='F');
+ }
+ for(const c of statesAt(time,g)){
+  ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.ang);ctx.fillStyle=c.outgoing?'#aeb7bc':colors[c.a];ctx.strokeStyle='#283238';ctx.lineWidth=1;
+  ctx.beginPath();ctx.roundRect(-13.5,-5.4,27,10.8,2);ctx.fill();ctx.stroke();ctx.fillStyle='#42636f';ctx.fillRect(4,-4,5,8);
+  if(c.mov){const sign=c.mov===1?1:-1;ctx.strokeStyle='#fff';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(-8,3*sign);ctx.lineTo(-3,-3*sign);ctx.lineTo(2,3*sign);ctx.stroke()}
+  ctx.restore();
+ }
+}
+function pause(){playing=false;$('play').textContent='▶'}
+$('play').onclick=()=>{if(time>=rows().length)time=0;playing=!playing;$('play').textContent=playing?'Ⅱ':'▶';render()};
+$('reset').onclick=()=>{time=0;render()};$('time').oninput=()=>{time=+$('time').value;render()};
+$('mode').onchange=()=>{fillScenarios();render()};$('scenario').onchange=render;$('controller').onchange=render;$('zoom').oninput=render;
+$('speed').oninput=()=>$('speedout').textContent=$('speed').value+'×';
+function frame(now){if(last&&playing){time+=Math.min((now-last)/1000,.1)*+$('speed').value;if(time>=rows().length){time=rows().length;pause()}render()}else if(!playing&&last===0)render();last=now;requestAnimationFrame(frame)}
+render();requestAnimationFrame(frame);
+window.replay={statesAt:t=>statesAt(t,geom()),seek:t=>{time=t;render()},select:(mode,scenario,controller)=>{$('mode').value=mode;fillScenarios();$('scenario').value=scenario;$('controller').value=controller;render()},data:DATA,motion:MOTION};
+})().catch(error=>{document.getElementById('phase').textContent='Replay load failed: '+error.message;console.error(error)});
+</script></html>

@@ -5,6 +5,7 @@
 #   ./run_project.sh           full study  -> results/
 #   ./run_project.sh --quick   quick check -> results_quick/
 #   ./run_project.sh --test    unit tests
+#   ./run_project.sh --cases   primary/secondary left-turn case studies -> results_complex/
 # Any other arguments (e.g. --workers 4) are passed to run.py.
 set -eo pipefail
 cd "$(dirname "$0")"
@@ -60,6 +61,7 @@ for arg in "$@"; do
     case "$arg" in
         --setup) MODE=setup ;;
         --test)  MODE=test ;;
+        --cases) MODE=cases ;;
         *)       ARGS+=("$arg") ;;
     esac
 done
@@ -72,7 +74,10 @@ case "$MODE" in
         echo "Environment ready: $(pwd)/.venv"
         ;;
     test)
-        exec "$PY" -m unittest tests test_microscopic -v
+        exec "$PY" -m unittest tests test_microscopic test_intersection -v
+        ;;
+    cases)
+        exec "$PY" run_cases.py ${ARGS[@]+"${ARGS[@]}"}
         ;;
     run)
         exec "$PY" run.py ${ARGS[@]+"${ARGS[@]}"}

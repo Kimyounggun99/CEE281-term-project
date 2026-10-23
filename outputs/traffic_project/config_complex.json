@@ -1,0 +1,24 @@
+{
+  "intersection": {
+    "id": "intersection_1",
+    "roads": [
+      {"name": "primary", "approaches": ["N", "S"], "lanes": ["L", "T", "TR"], "left_mode": "protected_permissive",
+       "through_factor": 0.8, "left_factor": 0.3, "right_factor": 0.15, "fixed_green_s": 30},
+      {"name": "secondary", "approaches": ["E", "W"], "lanes": ["LT", "TR"], "left_mode": "permissive",
+       "through_factor": 0.5, "left_factor": 0.1, "right_factor": 0.1, "fixed_green_s": 20}
+    ],
+    "left_path_m": 30.0,
+    "left_conflict_m": 14.0,
+    "through_conflict_m": 12.0,
+    "right_path_m": 12.0,
+    "right_conflict_m": 6.0,
+    "critical_gap_s": 4.5,
+    "follow_up_s": 2.5,
+    "gap_safety_s": 1.0,
+    "min_left_green_s": 5,
+    "max_left_green_s": 25,
+    "fixed_left_green_s": 10
+  },
+  "scenarios": ["balanced", "directional_shift", "left_surge", "detector_fault", "delayed", "heavy"],
+  "left_mode_study": {"modes": ["permissive", "protected", "protected_permissive"], "scenarios": ["balanced", "left_surge", "heavy"]}
+}

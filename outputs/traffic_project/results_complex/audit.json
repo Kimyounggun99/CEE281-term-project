@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "metric_records": 180,
+  "full_traces": 36,
+  "trajectory_sets": 24,
+  "vehicle_records": 259659,
+  "checks": [
+    "saved-input counts by second, lane and movement",
+    "identities and exit routing",
+    "event order and censoring",
+    "independent time-loss calculation",
+    "movement and aggregate reconciliation",
+    "matched demand across modes/controllers",
+    "conflict occupancy and PET including opposing rights",
+    "per-step conservation, storage and signal conflicts",
+    "trajectory speed/acceleration bounds, lane separation and protected-movement clearance"
+  ]
+}

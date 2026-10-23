@@ -28,9 +28,12 @@ Run from `outputs/traffic_project/`:
 ./run_project.sh --quick        # quick run      -> results_quick/
 ./run_project.sh                # full study     -> results/
 ./run_project.sh --workers 4    # full study, 4 worker processes
+./run_project.sh --cases        # primary/secondary + left-turn case studies -> results_complex/
+./run_project.sh --cases --quick # short complex study -> results_complex_quick/
 
 open results/RESULTS.md         # summary (Linux: xdg-open)
 open results/replay.html        # replay (created by the full run)
+open results_complex/replay.html # updated L/T/TR and LT/TR intersection replay
 ```
 
 After a full run:
