@@ -78,6 +78,19 @@ class RingBarrierSignal(unittest.TestCase):
         self.assertEqual([lay.seq[0][r][state[1][r][0]][0] for r in range(2)],['L','T'])
 
 
+class TravelTime(unittest.TestCase):
+    def test_matches_free_idm_vehicle(self):
+        # Gap acceptance relies on travel_time; it must match a plant vehicle under IDM free-road acceleration.
+        # Constant-a kinematics gives 4.18 s here, about 0.11 s too fast for the turner seen in seed 104.
+        p=microscopic.Plant(COMPLEX); a=np.zeros((4,2),int); a[0,0]=1; p.add(a,0); p.step(0,'0:green')
+        v=p.cars[0][0]; v.x=-40.; v.v=8.; t=0.
+        while v.x<2.3:
+            x0=v.x; p.step(t,'0:green'); t+=p.dt
+        t-=p.dt*(v.x-2.3)/(v.x-x0)
+        pp=p.p; expected=X.travel_time(42.3,8.,pp['acceleration_mps2'],pp['desired_speed_mps'],pp['acceleration_exponent'])
+        self.assertAlmostEqual(t,expected,delta=.02)
+
+
 class PermissiveLeft(unittest.TestCase):
     def setUp(self):
         self.c=with_mode('protected_permissive'); self.lay=X.Layout(self.c)

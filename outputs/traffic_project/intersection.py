@@ -5,6 +5,7 @@ Generalizes microscopic.py: each approach has a configurable lane list ('L' excl
 With the legacy layout (through lanes only) it reproduces microscopic.run exactly.
 """
 from collections import deque
+from functools import lru_cache
 from dataclasses import dataclass
 import numpy as np
 from forecast import predict, demand_rates
@@ -27,13 +28,24 @@ def conflicts(a,m,b,n):
     return True
 
 
-def travel_time(distance,v,a,vmax):
-    """Shortest time to cover distance from speed v with acceleration a up to vmax."""
+@lru_cache(maxsize=None)
+def free_road(a,vmax,delta):
+    """IDM free-road trajectory dv/dt=a(1-(v/v0)^delta) from rest: (time, position, speed) samples."""
+    dt=.01; t=[0.]; x=[0.]; v=[0.]
+    while x[-1]<2000:
+        acc=a*(1-(v[-1]/vmax)**delta); t.append(t[-1]+dt); x.append(x[-1]+v[-1]*dt+.5*acc*dt*dt); v.append(v[-1]+acc*dt)
+    return np.array(t),np.array(x),np.array(v)
+
+
+def travel_time(distance,v,a,vmax,delta=4.):
+    """Shortest IDM time to cover distance from speed v: free-road acceleration, no leader.
+    The ODE is autonomous, so starting at speed v is the rest trajectory shifted to where it reaches v."""
     if distance<=0:return 0.
     if v>=vmax:return distance/max(v,1e-9)
-    d1=(vmax*vmax-v*v)/(2*a)
-    if distance<=d1:return (-v+np.sqrt(v*v+2*a*distance))/a
-    return (vmax-v)/a+(distance-d1)/vmax
+    T,X,V=free_road(a,vmax,delta)
+    t0=np.interp(v,V,T); x1=np.interp(v,V,X)+distance
+    if x1>X[-1]:return T[-1]+(x1-X[-1])/V[-1]-t0
+    return float(np.interp(x1,X,T))-t0
 
 
 def permissive_capacity(v,tc,tf):
@@ -106,7 +118,7 @@ class Layout:
             if not np.isfinite([distance,point,p['exit_distance_m']]).all() or not 0<=point<=distance or distance<=0 or distance+p['vehicle_length_m']>p['exit_distance_m']:
                 raise ValueError('Movement path and rear clearance must fit inside the exit boundary; conflict points must lie on the path')
         self.effective_gap_s=max(g['critical_gap_s'],travel_time(p['minimum_gap_m']+g['left_conflict_m']+p['vehicle_length_m'],0.,
-                                 p['acceleration_mps2'],p['desired_speed_mps'])+g['gap_safety_s'])
+                                 p['acceleration_mps2'],p['desired_speed_mps'],p['acceleration_exponent'])+g['gap_safety_s'])
         self.opp_w=[self.M[OPP[a]]*self.priority_w for a in range(4)]
         self.opp_lanes=[int((w>0).sum()) for w in self.opp_w]
         self._ind={}; self._svc={}
@@ -289,7 +301,7 @@ class Plant:
         later than both the critical gap and the time this turner needs to clear it. Once the
         opposing through shows yellow, its uncommitted approaching vehicles will stop (sneakers)."""
         p=self.p; g=self.g; length=p['vehicle_length_m']; acc=p['acceleration_mps2']; v0=p['desired_speed_mps']
-        need=max(g['critical_gap_s'],travel_time(-v.x+g['left_conflict_m']+length,v.v,acc,v0)+g['gap_safety_s'])
+        need=max(g['critical_gap_s'],travel_time(-v.x+g['left_conflict_m']+length,v.v,acc,v0,p['acceleration_exponent'])+g['gap_safety_s'])
         for ch,cars in enumerate(self.cars):
             if self.lay.ch_app[ch]!=OPP[a]:continue
             for u in cars:
@@ -297,7 +309,7 @@ class Plant:
                 if u.mov==1 or u.x-length>=point:continue
                 # Test the stop condition directly: this lane may not have made its yellow decision yet this step.
                 if opposing!='G' and u.x<0 and not u.committed and -u.x>u.v*u.v/(2*p['yellow_decision_braking_mps2']):continue
-                if travel_time(point-u.x,u.v,acc,v0)<need:return False
+                if travel_time(point-u.x,u.v,acc,v0,p['acceleration_exponent'])<need:return False
         return True
 
     def mark(self,v,x0,x1,t):
