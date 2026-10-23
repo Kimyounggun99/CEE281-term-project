@@ -21,12 +21,12 @@
   "approach_labels": "Origin compass leg; outbound_approach is the destination compass leg",
   "lane_id": "1-based, median to curb, within an inbound approach",
   "throughput": "Front-bumper stop-line crossings, including vehicles still inside the junction",
+  "residual_veh": "Unserved before the stop line; total local-domain inventory is offered_veh minus exited_veh",
+  "position_m": "Final observed front-bumper distance from the stop line along the movement path, not a world coordinate",
   "outbound_entry_time_s": "Front bumper reaches the end of its movement path (receiving-link entry)",
   "junction_clear_time_s": "Rear bumper clears that path",
   "exit_time_s": "Front bumper reaches idm.exit_distance_m",
   "missing_times": "Blank means event not observed by observed_until_s; residual vehicles are censored, not discarded",
   "delay_s": "Time loss to the stop line, including external waiting; partial time loss for unserved vehicles",
-  "links": "Local port IDs; a future network must map outbound ports to downstream inbound ports and enforce receiving capacity",
-  "residual_veh": "Unserved before the stop line; total local-domain inventory is offered_veh minus exited_veh",
-  "position_m": "Final observed front-bumper distance from the stop line along the movement path, not a world coordinate"
+  "links": "Local port IDs; a future network must map outbound ports to downstream inbound ports and enforce receiving capacity"
 }

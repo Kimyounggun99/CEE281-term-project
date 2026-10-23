@@ -8,11 +8,11 @@ Entry lanes per approach: 2. Per-lane demand factors: [1.0, 1.0]. Discharge rate
 
 | Scenario | fixed | responsive | mpc_transformer |
 |---|---:|---:|---:|
-| balanced | 45.409 | 47.468 | 37.094 |
-| directional_shift | 57.274 | 58.889 | 49.545 |
-| detector_fault | 45.409 | 46.100 | 39.594 |
-| delayed | 45.409 | 45.409 | 45.409 |
-| heavy | 225.890 | 225.781 | 216.879 |
+| balanced | 35.892 | 39.559 | 21.111 |
+| directional_shift | 48.846 | 49.472 | 34.339 |
+| detector_fault | 35.892 | 37.613 | 24.728 |
+| delayed | 35.892 | 35.892 | 35.892 |
+| heavy | 212.337 | 205.819 | 190.560 |
 
 ## Transformer MPC vs fixed: paired differences
 
@@ -20,11 +20,11 @@ Negative values mean less delay; positive values mean more delay. Intervals are 
 
 | Scenario | Mean difference [veh h] | 95% CI [veh h] |
 |---|---:|---|
-| balanced | -8.314 | [-9.747, -6.882] |
-| directional_shift | -7.729 | [-9.099, -6.359] |
-| detector_fault | -5.815 | [-7.132, -4.498] |
+| balanced | -14.781 | [-19.326, -10.236] |
+| directional_shift | -14.507 | [-18.119, -10.895] |
+| detector_fault | -11.164 | [-14.924, -7.404] |
 | delayed | 0.000 | [0.000, 0.000] |
-| heavy | -9.012 | [-9.728, -8.295] |
+| heavy | -21.778 | [-23.606, -19.949] |
 
 ## 60 s forecast count MAE [veh/approach/horizon]
 
@@ -60,12 +60,12 @@ Connecting the supplied scaffold, manual video verification, per-member contribu
 
 ## IDM dynamics verification
 
-Maximum speed: 36.00 km/h. Red entries: 0.
-Position guard interventions: 0. Minimum net gap: 1.993 m.
+Maximum speed: 54.00 km/h. Red entries: 0.
+Position guard interventions: 0. Minimum net gap: 1.785 m.
 Delay is free-flow-relative time loss, including boundary waiting. Committed yellow entries are permitted. All controllers, including fixed timing, share an occupancy-based all-red clearance interlock. Parameters and geometry remain educational assumptions, not field calibration.
 
 ## Physical queue storage
 
-Detector spacing: 200.0 m. Capacity: 30 vehicles per lane.
-Largest observed stop-line-to-queue-tail distance: 199.971 m.
+Detector spacing: 200.0 m. Capacity: 28 vehicles per lane.
+Largest observed stop-line-to-queue-tail distance: 199.901 m.
 max_queue_veh excludes the outside reservoir. max_queue_plus_boundary_veh includes it. Excess demand is retained outside, never clipped or discarded. This admission constraint is not a guarantee that signal control can serve oversaturated demand.

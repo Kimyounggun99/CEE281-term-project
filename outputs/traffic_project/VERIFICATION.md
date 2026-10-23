@@ -18,7 +18,7 @@
 - 17 unit tests passed, including free-flow green passage without detector braking, red stopping and bounded restart, closed-loop accounting, time-step sensitivity, and the late-yellow reacceleration regression.
 - Recomputed all 100 intersection experiments and 5 freeway comparisons. The independent audit passed for all 100 metric records and 20 detailed traces. Across the intersection study: zero positional guard interventions, zero red entries, minimum same-lane bumper gap 1.9929 m, maximum speed 10 m/s, and maximum independent delay-accounting error 1.75e-7 vehicle-seconds.
 - The saved-output audit now checks position increments against recorded speeds, in addition to speed and acceleration bounds, independent cohort delay accounting, conservation and conflicting-phase clearance. Any positional guard intervention fails the audit.
-- The renderer uses stored physical positions and speeds at 0.2 s intervals, not prescribed approach/discharge animations. Default playback is 1x; desired speed is 10 m/s (36 km/h).
+- The renderer uses stored physical positions and speeds at 0.2 s intervals, not prescribed approach/discharge animations. Default playback is 1x; desired speed is 15 m/s (54 km/h) from v3.2 (10 m/s before).
 - Final Playwright/Edge checks inspected 20,716 tracks, including 275 steady-speed and 19,492 accelerating stop-line crossings. Playback advanced, departing vehicles were present, and there were no JavaScript errors or mobile horizontal overflow. Desktop 1280x1050 and mobile 390x844 screenshots were inspected.
 - This is an educational synthetic-demand model, not field validation. There are no turns, pedestrians, lane changes or downstream blockage. MPC remains a fluid approximation to the IDM plant.
 
