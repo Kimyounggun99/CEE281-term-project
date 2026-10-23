@@ -1,0 +1,117 @@
+{
+  "duration_s": 900,
+  "intersection_model": "idm",
+  "idm": {
+    "dt_s": 0.2,
+    "desired_speed_mps": 10.0,
+    "acceleration_mps2": 1.2,
+    "comfortable_braking_mps2": 2.0,
+    "max_braking_mps2": 6.0,
+    "headway_s": 1.5,
+    "minimum_gap_m": 2.0,
+    "vehicle_length_m": 4.5,
+    "approach_length_m": 200.0,
+    "intersection_length_m": 24.0,
+    "exit_distance_m": 69.0
+  },
+  "lanes_per_approach": 2,
+  "lane_demand_factors": [
+    1.0,
+    1.0
+  ],
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "storage_veh": 30,
+  "saturation_veh_s": 0.5,
+  "min_green_s": 10,
+  "max_green_s": 50,
+  "fixed_green_s": 30,
+  "yellow_s": 3,
+  "all_red_s": 1,
+  "decision_s": 5,
+  "observation_s": 10,
+  "forecast_horizon_s": 60,
+  "beam_width": 24,
+  "training_days": 30,
+  "epochs": 18,
+  "scenarios": [
+    "balanced",
+    "directional_shift",
+    "left_surge",
+    "detector_fault",
+    "delayed",
+    "heavy"
+  ],
+  "intersection": {
+    "id": "intersection_1",
+    "roads": [
+      {
+        "name": "primary",
+        "approaches": [
+          "N",
+          "S"
+        ],
+        "lanes": [
+          "L",
+          "T",
+          "TR"
+        ],
+        "left_mode": "protected_permissive",
+        "through_factor": 0.8,
+        "left_factor": 0.3,
+        "right_factor": 0.15,
+        "fixed_green_s": 30
+      },
+      {
+        "name": "secondary",
+        "approaches": [
+          "E",
+          "W"
+        ],
+        "lanes": [
+          "LT",
+          "TR"
+        ],
+        "left_mode": "permissive",
+        "through_factor": 0.5,
+        "left_factor": 0.1,
+        "right_factor": 0.1,
+        "fixed_green_s": 20
+      }
+    ],
+    "left_path_m": 30.0,
+    "left_conflict_m": 14.0,
+    "through_conflict_m": 12.0,
+    "right_path_m": 12.0,
+    "right_conflict_m": 6.0,
+    "critical_gap_s": 4.5,
+    "follow_up_s": 2.5,
+    "gap_safety_s": 1.0,
+    "min_left_green_s": 5,
+    "max_left_green_s": 25,
+    "fixed_left_green_s": 10
+  },
+  "left_mode_study": {
+    "modes": [
+      "permissive",
+      "protected",
+      "protected_permissive"
+    ],
+    "scenarios": [
+      "balanced",
+      "left_surge",
+      "heavy"
+    ]
+  },
+  "approach_demand_factors": [
+    2.05,
+    2.05,
+    1.2,
+    1.2
+  ]
+}

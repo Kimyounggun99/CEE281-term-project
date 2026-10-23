@@ -1,5 +1,76 @@
 # CEE 281: Adaptive Traffic Signal Control
 
+## v3.1: left, through and right movements
+
+The current `--cases` layout has primary N/S roads with **L T TR** lanes and secondary E/W roads with **LT TR** lanes, from median to curb. L is left only, T is straight only, LT is left/straight, and TR is straight/right. A vehicle retains its movement and lane; shared lanes use FIFO service, so vehicles cannot pass a waiting turner.
+
+The v3.0 dual-ring sequence is retained. Right turns use the through ball, including the existing yellow commitment rule; right turn on red is disabled. A permissive left yields to opposing through **and right** vehicles. Opposing right/left merges are treated conservatively as conflicts even when separate outbound lanes could accommodate both. All-red holds include right-turn occupants and already-accepted lefts still approaching the stop line; the latter fixes a late-entry clearance bug found during cross-examination. The replay draws right turns to the curb lane of the correct exit road.
+
+`right_factor` is total right demand per approach, distributed over permitted right-turn lanes. Defaults `.15` on primary and `.1` on secondary roads are illustrative synthetic assumptions, as are the 12 m right-turn path and 6 m conflict-point distance. Through demand remains `.8` per primary through-capable lane and `.5` per secondary through-capable lane; right demand is additional. Turners keep the existing IDM speed model; turning-speed reduction, pedestrians, lane changes and downstream receiving queues are not modeled.
+
+From this directory:
+
+```bash
+./run_project.sh --test
+./run_project.sh --cases --quick          # 360 s, one seed -> results_complex_quick/
+./run_project.sh --cases --workers 4      # 900 s, five seeds -> results_complex/
+xdg-open results_complex/replay.html     # macOS: open instead of xdg-open
+.venv/bin/python audit_complex.py --results results_complex
+node ../../work/verify_complex_replay.cjs # embedded replay behavior; no browser needed
+```
+
+Both study commands train the forecaster, simulate all three controllers and build the HTML animation automatically. For a replay-only rebuild of saved complex trajectories:
+
+```bash
+.venv/bin/python build_replay.py --results results_complex
+```
+
+### Metrics and future road networks
+
+`metrics.csv` retains aggregate and per-approach results and adds separate through/left/right demand, throughput and time loss. `N_inbound_lanes` through `W_inbound_lanes` describe the mixed layout; `lanes_per_approach` is blank when approaches have different lane counts. `movement_metrics.csv` contains each run's lane/movement counts, stop-line throughput, residual and outside demand, time loss, receiving-link entries and exits.
+
+Every seed and controller also saves `*_seedN_vehicles.csv`, `*_seedN_movement_metrics.csv` and `*_seedN_conflict_intervals.csv`. Vehicle records include `intersection_id`, `run_id`, a run-scoped `vehicle_uid`, inbound/outbound link ports, origin/exit compass legs, lane, movement, offered/admitted/stop-line/outbound-entry/junction-clear/domain-exit times, final observed position/speed and status. Blank event times mean the event was not observed before `observed_until_s`. Vehicles still outside or upstream remain in the journal and contribute partial time loss. Delay is per offered vehicle at the finite horizon, not mean delay of completed trips.
+
+`schema.json` defines keys, units and event boundaries. Local ports such as `intersection_1:W:out` can later map to another intersection's inbound port; `outbound_entry_time_s` records when the front reaches that receiving link. Movement paths and rear clearance must fit inside the configured exit boundary; invalid geometry is rejected before simulation. A network simulator must still implement shared link storage, downstream capacity, travel time, spillback and vehicle handoff. Independent runs do not yet interact through these exports.
+
+`audit_complex.py` reads saved input tapes and exports independently, checks every offered vehicle and movement count, reconstructs time loss and censoring, checks exit routing and event order, verifies paired inputs, and checks conflict occupancy/PET against opposing through/right traffic. First-seed traces and available trajectories also check conservation, storage, signal conflicts, speed/acceleration bounds and clearance before protected movements. The Node check exercises replay selection, counts, playback and right-turn exit geometry; it does not rasterize a browser canvas.
+
+The following v3.0 section records the earlier through/left-only configuration.
+
+## v3.0: primary/secondary roads with left-turn lanes
+
+`intersection.py` generalizes the IDM plant and the signal. Each road in the `intersection` block of `config_complex.json` lists its lanes from the median outward (`L` exclusive left, `T` through, `LT` shared) and a primary-road `left_mode`:
+
+- `permissive`: no arrow. Lefts turn on the green ball or the flashing yellow arrow (FYA), yielding to oncoming traffic.
+- `protected`: lefts turn on the green arrow only.
+- `protected_permissive`: green arrow, then FYA. This mode needs an exclusive `L` lane, as does `protected`.
+
+The default case has the primary N/S road with `L T T` and the secondary E/W road with `LT T`.
+
+**Signal.** A NEMA dual-ring, lead-lead controller with a barrier between the two roads. Ring 1 runs SB-left then NB-through (φ1→φ2), and ring 2 runs NB-left then SB-through (φ5→φ6). The allowed concurrent pairs are 1+5, 1+6, 2+5 and 2+6, so a left arrow can show alongside the opposing left or alongside its own approach's through ball. Both rings cross the barrier together.
+
+**Left-turn rules.**
+- The FYA is tied to the *opposing* through green, which prevents the yellow trap.
+- A permissive turner accepts a gap only if every oncoming through vehicle needs longer than both the HCM critical headway (4.5 s) and the turner's own time to clear the conflict point plus 1 s.
+- During the opposing yellow, oncoming vehicles that will stop are ignored (sneakers).
+- Left phases are called, skipped and gapped out by 12-m stop-bar presence loops. The pretimed `fixed` plan always serves lefts.
+- The all-red interlock holds until no vehicle conflicting with the next movements is in the box.
+
+**MPC.** It optimizes per-ring "end left arrow" and "cross barrier" decisions with a lane-level fluid model. Permissive service uses the HCM gap-acceptance flow `v e^{-v tc}/(1-e^{-v tf})` with the plant's effective gap.
+
+**Running.** `./run_project.sh --cases` runs 6 scenarios (adding `left_surge`, which triples the N-approach left demand from 450 s) plus a left-mode comparison on the same demand tapes, and writes to `results_complex/`. `--quick` writes to `results_complex_quick/`. `results_complex/replay.html` animates turning paths, arrows and the FYA.
+
+**Legacy equivalence.** With the legacy through-only layout, `intersection.run` reproduces `microscopic.run` metric for metric (`test_intersection.py`), so the v2.x study in `results/` is unchanged. `test_intersection.py` also checks:
+- the signal never shows conflicting greens;
+- the FYA appears only while the opposing through is green;
+- interval lengths are correct;
+- uncalled lefts are skipped;
+- protected-only lefts never turn on the ball;
+- permissive turners wait for gaps;
+- conservation, red entries and PET hold in closed loop.
+
+**Not modeled:** right turns, pedestrians, lane changes, left-bay spillback, turning-speed reduction, and turners waiting inside the box.
+
 ## v2.2: moving-average forecasting removed
 
 The moving-average (MA) forecast and the `mpc_ma` controller were removed. The study now compares three controllers: `fixed`, `responsive` and `mpc_transformer`. Only `mpc_transformer` issues arrival forecasts; `fixed` and `responsive` do not, so they no longer write `_forecasts.csv` / `_forecast_errors.csv`, and `forecast_scores.csv` contains Transformer scores only. Results for the remaining controllers are unchanged, so the saved `results/` were updated by dropping the `mpc_ma` records rather than rerunning. Two non-MA-controller uses of averaging remain by design: before 12 intervals of history exist (first 120 s) the Transformer forecaster returns the mean of the observed history, and a missing detector interval is imputed with the mean of the last three intervals.

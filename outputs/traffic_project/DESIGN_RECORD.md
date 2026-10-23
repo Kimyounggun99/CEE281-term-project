@@ -1,5 +1,33 @@
 # Evolving design record / v1.0.0
 
+## v3.1: shared through/right lanes and saved movement interfaces
+
+Primary roads now use L/T/TR and secondary roads LT/TR, as requested. Existing ring sequences, left indications, yellow commitment and IDM dynamics are retained. Right turns use the through ball and shared-lane FIFO, with no right turn on red. Permissive lefts yield to opposing rights as well as through vehicles; the MPC's opposing-flow weights include both. Right-turn occupants participate in the existing all-red interlock. The replay uses a separate right-turn curve and the correct outbound compass leg.
+
+This follows the movement/phase distinction in [FHWA Signal Timing Manual chapter 4](https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter4.htm): one phase can serve through and right movements. The 12 m right path, 6 m right conflict-point location and `.15`/`.1` demand factors are modeling assumptions, not field calibration or signal-design recommendations. Opposing left/right merges are conservatively conflicting; no benefit is assumed from distinct receiving lanes. Turning speed and downstream leader following retain the simplified scalar-path IDM model.
+
+Each run exports every offered vehicle, including censored boundary/upstream vehicles, plus lane/movement metrics and conflict occupancy. IDs distinguish intersections, modes, scenarios, seeds and controllers. Local inbound/outbound ports and front-entry, rear-clearance and local-domain-exit timestamps distinguish stop-line service from delivery to a future receiving link. A versioned schema defines units and blank timestamps. These records support future network coupling; they do not implement receiving capacity, shared link storage, travel time or spillback.
+
+Cross-examination found an existing all-red bug: a left that accepted a gap during yellow could still be upstream when the occupancy detector released the next barrier, then enter during all-red. Clearance now also waits for already-accepted upstream lefts. The signal sequence is unchanged; regression tests exercise the late entry and primary/primary, primary/secondary, secondary/primary and secondary/secondary layouts. The old zero red-entry and guard counters alone did not establish clearance correctness.
+
+The independent complex audit reconciles saved tapes, journals, movement tables and aggregates, reconstructs time loss, checks paired demands, and checks conflict occupancy/PET including opposing rights. Available detailed traces and trajectories check signal safety, storage, motion bounds and clearance. Tests cover FIFO, lane permissions, right-turn signals, gap acceptance, routing, censoring, corrupted exports and closed-loop operation across all controllers/modes. A Node runtime check exercises the embedded replay without installing browser dependencies.
+
+## v3.0: Primary/secondary roads, left-turn lanes, dual-ring phasing
+
+`intersection.py` is a separate generalized module, and `microscopic.py` is untouched. Lanes are channels with a kind (L/T/LT), and each vehicle carries a movement (through/left). The signal state is `(barrier, ((pos, stage, elapsed) per ring))`, using the NEMA lead-lead sequence from FHWA Signal Timing Manual ch. 4, https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter4.htm.
+
+**Concurrency and conflicts.** Concurrency follows the barrier groups {1,2,5,6} and {3,4,7,8}. Conflicts: perpendicular movements always conflict, a left conflicts with the opposing through, and opposing lefts are compatible.
+
+**Permissive indication.** Permissive = FYA (MUTCD IA-10, NCHRP 493), shown only while the opposing through is green. This rules out the yellow trap by construction, and the signal test checks it on every reachable state.
+
+**Gap acceptance.** It uses the HCM signalized values tc=4.5 s and tf=2.5 s. The turner's own clearing time from a stop (about 5.9 s + 1 s margin) binds, so the effective critical gap is 6.9 s. The MPC uses that same value in the permissive-capacity formula, so the controller model and the plant agree. Sneaker clearance on the opposing yellow is permitted.
+
+**Left calls.** Calls come from stop-bar presence, not from the 10-s inventory. The inventory includes vehicles still 200 m upstream, so it never let a left phase gap out or skip; presence matches field actuation.
+
+**Demand.** Demand factors were chosen so that the primary cross product (about 2.0e5) exceeds the 1e5 two-lane screening guideline (WisDOT TSDM 3-4-1), while the secondary road (about 4e4) stays permissive. The fixed plan (10 / 30 / 20 s) rounds up Webster's split. The Transformer is retrained on the new approach totals via `approach_demand_factors`.
+
+**Verification.** Exact reduction to v2.1 for the fixed and responsive controllers (identical metrics, ≤1e-8 delay-check noise). The MPC differs by design because it models individual lanes.
+
 ## v2.1: Upstream storage boundary
 
 Move A loops to 200 m upstream; retain two inbound lanes and nominal 30 vehicles/lane. Physical capacity is the smaller of configured storage and floor(length / (vehicle length + standstill gap)). Admission requires space and places the rear bumper at or beyond the upstream boundary. The front-bumper entry location is therefore -195.5 m; free-flow-relative delay uses this exact travel distance.

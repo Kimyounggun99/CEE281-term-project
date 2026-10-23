@@ -46,7 +46,9 @@ def train(config, folder):
     xs, ys = [], []
     for day in range(config['training_days']):
         ends = np.arange(10, config['duration_s'] + 1, 10)
-        counts = rng.poisson(demand_rates(ends - 5, config['duration_s'], 'balanced', day) * 10 * sum(config.get('lane_demand_factors', [1.])))
+        # Per-approach totals (primary/secondary layouts) or the legacy symmetric lane sum.
+        scale = np.asarray(config['approach_demand_factors']) if 'approach_demand_factors' in config else sum(config.get('lane_demand_factors', [1.]))
+        counts = rng.poisson(demand_rates(ends - 5, config['duration_s'], 'balanced', day) * 10 * scale)
         f = features(counts, ends, day % 7)
         for j in range(L, len(f)):
             xs.append(f[j-L:j]); ys.append(counts[j])

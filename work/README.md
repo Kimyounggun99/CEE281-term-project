@@ -1,5 +1,7 @@
 # Replay browser checks
 
+`node verify_complex_replay.cjs` checks the current complex replay's embedded JavaScript, controller/scenario selection, counts, playback and right-turn exit geometry using Node's standard library. It reads `../outputs/traffic_project/results_complex/replay.html`; pass another HTML path as its first argument for quick results. It does not check browser canvas rasterization.
+
 These Node scripts open `../outputs/traffic_project/results/replay.html` in headless Chromium (Playwright) and check rendering, motion and storage limits. Screenshots are written to this folder.
 
 On the original Windows machine they used a Codex-bundled Playwright and Microsoft Edge. On macOS they use a local Playwright install and its bundled Chromium:
