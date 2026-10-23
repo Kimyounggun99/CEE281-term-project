@@ -11,7 +11,7 @@ from forecast import predict, demand_rates
 from microscopic import DEFAULTS
 from simulation import APPROACHES
 
-VERSION='3.1.0'
+VERSION='3.2.0'
 OPP=(1,0,3,2)
 EXITS=((1,2,3),(0,3,2),(3,1,0),(2,0,1))
 MOVEMENTS=('through','left','right')
@@ -295,7 +295,8 @@ class Plant:
             for u in cars:
                 point=self.conflict_point(u.mov)
                 if u.mov==1 or u.x-length>=point:continue
-                if opposing!='G' and u.x<0 and not u.committed:continue
+                # Test the stop condition directly: this lane may not have made its yellow decision yet this step.
+                if opposing!='G' and u.x<0 and not u.committed and -u.x>u.v*u.v/(2*p['yellow_decision_braking_mps2']):continue
                 if travel_time(point-u.x,u.v,acc,v0)<need:return False
         return True
 
@@ -319,7 +320,9 @@ class Plant:
                 gap=cars[-1].x-self.entry_x-length if cars else 1e6
                 if gap>=p['minimum_gap_m']+.2:
                     uid,born,m=self.pending[ch].popleft(); self.waiting[ch,m]-=1
-                    speed=v0 if gap>p['minimum_gap_m']+v0*p['headway_s'] else min(cars[-1].v,max(0,(gap-p['minimum_gap_m'])/p['headway_s']))
+                    # Largest entry speed whose IDM desired gap s*(v,v-lead) fits the gap: k v^2+(T-k lead)v-(gap-s0)=0.
+                    k=1/(2*np.sqrt(p['acceleration_mps2']*p['comfortable_braking_mps2'])); h=p['headway_s']-k*(cars[-1].v if cars else v0)
+                    speed=min(v0,(-h+np.sqrt(h*h+4*k*max(0,gap-p['minimum_gap_m'])))/(2*k))
                     v=Vehicle(uid,ch,born,self.entry_x,speed,m); cars.append(v)
                     self.vehicles[uid].update(admitted_time_s=float(t),status='upstream')
                     if self.detailed:self.tracks[uid]=[uid,ch,round(t,5),[round(v.x,4)],[round(v.v,4)],born,m]
@@ -334,7 +337,7 @@ class Plant:
                 green=state=='G'; yellow=state=='Y'
                 if green:v.committed=False
                 leader_committed=head or cars[j-1].committed
-                if yellow and started and v.x<0 and v.v>.5 and leader_committed and -v.x<=v.v*v.v/(2*p['comfortable_braking_mps2']):
+                if yellow and started and v.x<0 and v.v>.5 and leader_committed and -v.x<=v.v*v.v/(2*p['yellow_decision_braking_mps2']):
                     v.committed=True
                 go=green or (yellow and v.committed); yellow_go[j]=yellow
                 if v.mov==1 and not go and v.x<0:
@@ -347,7 +350,7 @@ class Plant:
             red_leader=blocked & (-x<gap)
             gap=np.where(red_leader,-x,gap); lead_speed=np.where(red_leader,0,lead_speed)
             desired=p['minimum_gap_m']+np.maximum(0,speed*p['headway_s']+speed*(speed-lead_speed)/(2*np.sqrt(p['acceleration_mps2']*p['comfortable_braking_mps2'])))
-            acc=p['acceleration_mps2']*(1-(speed/v0)**4-(desired/np.maximum(gap,.01))**2)
+            acc=p['acceleration_mps2']*(1-(speed/v0)**p['acceleration_exponent']-(desired/np.maximum(gap,.01))**2)
             acc=np.clip(acc,-p['max_braking_mps2'],p['acceleration_mps2'])
             nv=np.maximum(0,speed+acc*dt); dx=speed*dt+.5*acc*dt*dt
             stopping=speed+acc*dt<0; dx[stopping]=-speed[stopping]**2/(2*acc[stopping])

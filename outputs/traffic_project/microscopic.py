@@ -5,9 +5,13 @@ import numpy as np
 from forecast import predict
 from simulation import Signal, step_signal, optimize, APPROACHES
 
-VERSION='2.1.0'
-DEFAULTS=dict(dt_s=.2,desired_speed_mps=10.,acceleration_mps2=1.2,comfortable_braking_mps2=2.,
-              max_braking_mps2=6.,headway_s=1.5,minimum_gap_m=2.,vehicle_length_m=4.5,
+VERSION='2.2.0'
+# IDM city-traffic values from Treiber & Kesting, Traffic Flow Dynamics, Table 11.2.
+DEFAULTS=dict(dt_s=.2,desired_speed_mps=15.,acceleration_mps2=1.,comfortable_braking_mps2=1.5,acceleration_exponent=4.,
+              max_braking_mps2=6.,headway_s=1.,
+              # Stop-or-go on yellow uses the ITE yellow-interval deceleration, not IDM's comfortable b,
+              # so commitment distance v^2/(2*3) is covered within the 3 s yellow at 54 km/h.
+              yellow_decision_braking_mps2=3.,minimum_gap_m=2.,vehicle_length_m=5.,
               approach_length_m=200.,intersection_length_m=24.,exit_distance_m=69.)
 
 
@@ -70,7 +74,9 @@ class Plant:
                 gap=cars[-1].x-self.entry_x-length if cars else 1e6
                 if gap>=p['minimum_gap_m']+.2:
                     uid,born=self.pending[ch].popleft()
-                    speed=v0 if gap>p['minimum_gap_m']+v0*p['headway_s'] else min(cars[-1].v,max(0,(gap-p['minimum_gap_m'])/p['headway_s']))
+                    # Largest entry speed whose IDM desired gap s*(v,v-lead) fits the gap: k v^2+(T-k lead)v-(gap-s0)=0.
+                    k=1/(2*np.sqrt(p['acceleration_mps2']*p['comfortable_braking_mps2'])); h=p['headway_s']-k*(cars[-1].v if cars else v0)
+                    speed=min(v0,(-h+np.sqrt(h*h+4*k*max(0,gap-p['minimum_gap_m'])))/(2*k))
                     v=Vehicle(uid,ch,born,self.entry_x,speed); cars.append(v)
                     if self.detailed:self.tracks[uid]=[uid,ch,round(t,5),[round(v.x,4)],[round(v.v,4)],born]
             self.delay[approach]+=len(self.pending[ch])*dt
@@ -81,13 +87,13 @@ class Plant:
             for j,v in enumerate(cars):
                 if green:v.committed=False
                 leader_committed=j==0 or cars[j-1].x>=0 or cars[j-1].committed
-                if yellow and yellow_started and v.x<0 and v.v>.5 and leader_committed and -v.x<=v.v*v.v/(2*p['comfortable_braking_mps2']):
+                if yellow and yellow_started and v.x<0 and v.v>.5 and leader_committed and -v.x<=v.v*v.v/(2*p['yellow_decision_braking_mps2']):
                     v.committed=True
                 blocked[j]=v.x<0 and not green and not(yellow and v.committed)
             red_leader=blocked & (-x<gap)
             gap=np.where(red_leader,-x,gap); lead_speed=np.where(red_leader,0,lead_speed)
             desired=p['minimum_gap_m']+np.maximum(0,speed*p['headway_s']+speed*(speed-lead_speed)/(2*np.sqrt(p['acceleration_mps2']*p['comfortable_braking_mps2'])))
-            acc=p['acceleration_mps2']*(1-(speed/v0)**4-(desired/np.maximum(gap,.01))**2)
+            acc=p['acceleration_mps2']*(1-(speed/v0)**p['acceleration_exponent']-(desired/np.maximum(gap,.01))**2)
             acc=np.clip(acc,-p['max_braking_mps2'],p['acceleration_mps2'])
             nv=np.maximum(0,speed+acc*dt); dx=speed*dt+.5*acc*dt*dt
             stopping=speed+acc*dt<0; dx[stopping]=-speed[stopping]**2/(2*acc[stopping])
