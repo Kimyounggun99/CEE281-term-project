@@ -1,0 +1,345 @@
+sensor_id,interval_start_s,interval_end_s,delivery_time_s,count,departure_count,lane_arrival_counts,lane_departure_counts,mean_speed_mps,quality_flag,intersection_id,scenario,seed,controller,left_mode,metrics_schema_version,run_id
+N,0,10,40,2,0,"[0, 1, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,0,10,40,7,0,"[1, 3, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,0,10,40,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,0,10,40,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,10,20,50,7,2,"[2, 3, 2]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,10,20,50,6,4,"[0, 1, 5]","[0, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,10,20,50,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,10,20,50,3,0,"[2, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,20,30,60,3,2,"[0, 1, 2]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,20,30,60,7,7,"[1, 3, 3]","[1, 2, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,20,30,60,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,20,30,60,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,30,40,70,3,2,"[2, 0, 1]","[1, 1, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,30,40,70,6,1,"[1, 1, 4]","[0, 0, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,30,40,70,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,30,40,70,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,40,50,80,5,0,"[1, 1, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,40,50,80,3,0,"[0, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,40,50,80,5,4,"[2, 3]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,40,50,80,1,4,"[0, 1]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,50,60,90,3,0,"[0, 0, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,50,60,90,8,0,"[0, 2, 6]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,50,60,90,5,7,"[1, 4]","[3, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,50,60,90,0,3,"[0, 0]","[0, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,60,70,100,4,0,"[0, 3, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,60,70,100,5,0,"[0, 1, 4]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,60,70,100,2,5,"[1, 1]","[2, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,60,70,100,1,1,"[0, 1]","[1, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,70,80,110,8,1,"[2, 2, 4]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,70,80,110,8,1,"[2, 2, 4]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,70,80,110,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,70,80,110,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,80,90,120,12,3,"[1, 4, 7]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,80,90,120,5,2,"[1, 3, 1]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,80,90,120,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,80,90,120,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,90,100,130,7,2,"[0, 5, 2]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,90,100,130,7,3,"[1, 2, 4]","[1, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,90,100,130,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,90,100,130,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,100,110,140,2,6,"[1, 1, 0]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,100,110,140,7,8,"[2, 2, 3]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,100,110,140,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,100,110,140,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,110,120,150,4,8,"[0, 3, 1]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,110,120,150,6,8,"[0, 1, 5]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,110,120,150,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,110,120,150,4,0,"[2, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,120,130,160,8,10,"[1, 3, 4]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,120,130,160,5,8,"[1, 1, 3]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,120,130,160,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,120,130,160,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,130,140,170,6,1,"[1, 2, 3]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,130,140,170,5,3,"[1, 1, 3]","[1, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,130,140,170,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,130,140,170,6,0,"[2, 4]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,140,150,180,4,0,"[1, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,140,150,180,7,0,"[4, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,140,150,180,4,4,"[1, 3]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,140,150,180,1,4,"[1, 0]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,150,160,190,3,0,"[2, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,150,160,190,6,0,"[2, 1, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,150,160,190,2,5,"[1, 1]","[2, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,150,160,190,1,6,"[0, 1]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,160,170,200,4,0,"[1, 0, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,160,170,200,4,0,"[0, 1, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,160,170,200,2,3,"[1, 1]","[0, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,160,170,200,3,4,"[1, 2]","[1, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,170,180,210,3,1,"[1, 1, 1]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,170,180,210,2,1,"[2, 0, 0]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,170,180,210,4,0,"[1, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,170,180,210,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,180,190,220,2,3,"[0, 1, 1]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,180,190,220,2,3,"[0, 1, 1]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,180,190,220,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,180,190,220,6,0,"[2, 4]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,190,200,230,3,2,"[0, 1, 2]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,190,200,230,4,2,"[2, 2, 0]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,190,200,230,4,0,"[1, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,190,200,230,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,200,210,240,1,8,"[0, 1, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,200,210,240,2,8,"[0, 0, 2]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,200,210,240,9,0,"[4, 5]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,200,210,240,11,0,"[6, 5]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,210,220,250,2,8,"[0, 0, 2]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,210,220,250,1,8,"[1, 0, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,210,220,250,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,210,220,250,6,0,"[2, 4]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,220,230,260,1,5,"[0, 1, 0]","[1, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,220,230,260,2,5,"[0, 1, 1]","[1, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,220,230,260,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,220,230,260,5,0,"[2, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,230,240,270,4,0,"[1, 3, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,230,240,270,3,0,"[2, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,230,240,270,4,2,"[1, 3]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,230,240,270,2,1,"[1, 1]","[0, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,240,250,280,4,0,"[0, 4, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,240,250,280,2,0,"[0, 1, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,240,250,280,3,6,"[1, 2]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,240,250,280,2,3,"[1, 1]","[0, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,250,260,290,4,0,"[1, 2, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,250,260,290,1,0,"[0, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,250,260,290,7,8,"[6, 1]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,250,260,290,2,4,"[0, 2]","[0, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,260,270,300,1,0,"[0, 0, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,260,270,300,4,0,"[3, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,260,270,300,8,2,"[3, 5]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,260,270,300,4,2,"[3, 1]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,270,280,310,2,2,"[0, 2, 0]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,270,280,310,5,2,"[1, 0, 4]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,270,280,310,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,270,280,310,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,280,290,320,4,2,"[0, 1, 3]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,280,290,320,4,2,"[2, 0, 2]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,280,290,320,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,280,290,320,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,290,300,330,2,4,"[0, 1, 1]","[0, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,290,300,330,1,4,"[0, 0, 1]","[0, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,290,300,330,4,0,"[2, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,290,300,330,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,300,310,340,1,8,"[0, 1, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,300,310,340,4,8,"[1, 3, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,300,310,340,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,300,310,340,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,310,320,350,7,8,"[0, 2, 5]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,310,320,350,2,5,"[0, 0, 2]","[0, 1, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,310,320,350,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,310,320,350,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,320,330,360,8,7,"[2, 2, 4]","[1, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,320,330,360,6,6,"[1, 3, 2]","[1, 2, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,320,330,360,3,0,"[2, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,320,330,360,3,0,"[3, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,330,340,370,5,0,"[1, 1, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,330,340,370,9,0,"[1, 3, 5]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,330,340,370,0,2,"[0, 0]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,330,340,370,2,2,"[1, 1]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,340,350,380,6,0,"[0, 4, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,340,350,380,3,0,"[0, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,340,350,380,0,6,"[0, 0]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,340,350,380,1,6,"[0, 1]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,350,360,390,3,0,"[2, 0, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,350,360,390,8,0,"[3, 3, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,350,360,390,1,5,"[0, 1]","[1, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,350,360,390,0,8,"[0, 0]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,360,370,400,9,0,"[1, 7, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,360,370,400,8,0,"[0, 4, 4]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,360,370,400,1,1,"[0, 1]","[1, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,360,370,400,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,370,380,410,4,2,"[2, 1, 1]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,370,380,410,5,2,"[0, 2, 3]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,370,380,410,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,370,380,410,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,380,390,420,9,2,"[0, 2, 7]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,380,390,420,8,2,"[1, 2, 5]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,380,390,420,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,380,390,420,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,390,400,430,5,6,"[1, 3, 1]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,390,400,430,8,6,"[1, 5, 2]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,390,400,430,5,0,"[3, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,390,400,430,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,400,410,440,2,6,"[0, 0, 2]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,400,410,440,5,6,"[0, 3, 2]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,400,410,440,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,400,410,440,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,410,420,450,4,10,"[0, 2, 2]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,410,420,450,7,10,"[3, 4, 0]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,410,420,450,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,410,420,450,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,420,430,460,3,1,"[0, 2, 1]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,420,430,460,3,1,"[0, 0, 3]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,420,430,460,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,420,430,460,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,430,440,470,7,0,"[1, 2, 4]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,430,440,470,3,0,"[0, 2, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,430,440,470,1,4,"[0, 1]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,430,440,470,1,4,"[0, 1]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,440,450,480,5,0,"[2, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,440,450,480,6,0,"[1, 2, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,440,450,480,1,8,"[0, 1]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,440,450,480,1,8,"[0, 1]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,450,460,490,4,0,"[2, 1, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,450,460,490,6,0,"[1, 3, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,450,460,490,1,6,"[1, 0]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,450,460,490,1,6,"[0, 1]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,460,470,500,3,3,"[0, 3, 0]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,460,470,500,2,3,"[0, 1, 1]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,460,470,500,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,460,470,500,3,0,"[0, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,470,480,510,1,2,"[1, 0, 0]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,470,480,510,4,2,"[0, 2, 2]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,470,480,510,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,470,480,510,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,480,490,520,0,6,"[0, 0, 0]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,480,490,520,2,6,"[0, 1, 1]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,480,490,520,4,0,"[2, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,480,490,520,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,490,500,530,6,8,"[1, 2, 3]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,490,500,530,2,8,"[0, 2, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,490,500,530,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,490,500,530,7,0,"[4, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,500,510,540,0,10,"[0, 0, 0]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,500,510,540,2,10,"[2, 0, 0]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,500,510,540,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,500,510,540,3,0,"[2, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,510,520,550,1,1,"[0, 0, 1]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,510,520,550,0,1,"[0, 0, 0]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,510,520,550,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,510,520,550,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,520,530,560,2,0,"[1, 0, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,520,530,560,0,0,"[0, 0, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,520,530,560,4,4,"[0, 4]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,520,530,560,0,4,"[0, 0]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,530,540,570,0,0,"[0, 0, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,530,540,570,2,0,"[1, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,530,540,570,2,7,"[1, 1]","[3, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,530,540,570,6,8,"[3, 3]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,540,550,580,4,0,"[0, 2, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,540,550,580,1,0,"[0, 0, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,540,550,580,2,3,"[1, 1]","[1, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,540,550,580,5,4,"[1, 4]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,550,560,590,3,1,"[0, 1, 2]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,550,560,590,3,1,"[0, 2, 1]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,550,560,590,4,0,"[3, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,550,560,590,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,560,570,600,2,3,"[1, 0, 1]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,560,570,600,5,3,"[0, 5, 0]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,560,570,600,4,0,"[3, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,560,570,600,6,0,"[1, 5]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,570,580,610,2,2,"[0, 1, 1]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,570,580,610,3,2,"[1, 1, 1]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,570,580,610,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,570,580,610,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,580,590,620,3,8,"[1, 0, 2]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,580,590,620,4,8,"[1, 1, 2]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,580,590,620,3,0,"[2, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,580,590,620,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,590,600,630,1,8,"[0, 0, 1]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,590,600,630,5,8,"[0, 0, 5]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,590,600,630,3,0,"[2, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,590,600,630,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,600,610,640,6,5,"[1, 3, 2]","[1, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,600,610,640,1,5,"[0, 1, 0]","[1, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,600,610,640,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,600,610,640,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,610,620,650,6,0,"[0, 3, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,610,620,650,1,0,"[1, 0, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,610,620,650,1,1,"[1, 0]","[0, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,610,620,650,3,2,"[1, 2]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,620,630,660,5,0,"[1, 3, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,620,630,660,4,0,"[0, 3, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,620,630,660,1,3,"[1, 0]","[0, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,620,630,660,1,6,"[1, 0]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,630,640,670,8,0,"[0, 5, 3]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,630,640,670,4,0,"[1, 1, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,630,640,670,2,4,"[1, 1]","[0, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,630,640,670,1,8,"[1, 0]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,640,650,680,11,0,"[0, 5, 6]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,640,650,680,5,0,"[0, 1, 4]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,640,650,680,0,2,"[0, 0]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,640,650,680,0,3,"[0, 0]","[2, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,650,660,690,7,2,"[2, 3, 2]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,650,660,690,5,2,"[1, 1, 3]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,650,660,690,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,650,660,690,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,660,670,700,9,2,"[0, 4, 5]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,660,670,700,10,2,"[2, 4, 4]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,660,670,700,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,660,670,700,1,0,"[1, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,670,680,710,6,4,"[1, 0, 5]","[0, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,670,680,710,7,4,"[1, 6, 0]","[0, 2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,670,680,710,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,670,680,710,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,680,690,720,3,8,"[0, 2, 1]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,680,690,720,9,8,"[0, 5, 4]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,680,690,720,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,680,690,720,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,690,700,730,4,8,"[0, 4, 0]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,690,700,730,2,8,"[0, 1, 1]","[0, 4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,690,700,730,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,690,700,730,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,700,710,740,6,7,"[1, 1, 4]","[1, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,700,710,740,7,7,"[1, 1, 5]","[1, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,700,710,740,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,700,710,740,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,710,720,750,5,0,"[1, 2, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,710,720,750,6,0,"[1, 4, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,710,720,750,2,2,"[1, 1]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,710,720,750,1,2,"[1, 0]","[1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,720,730,760,9,0,"[3, 4, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,720,730,760,6,0,"[2, 2, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,720,730,760,1,6,"[1, 0]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,720,730,760,3,6,"[1, 2]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,730,740,770,5,0,"[0, 3, 2]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,730,740,770,5,0,"[0, 0, 5]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,730,740,770,1,8,"[1, 0]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,730,740,770,3,8,"[1, 2]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,740,750,780,6,1,"[0, 1, 5]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,740,750,780,2,1,"[1, 0, 1]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,740,750,780,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,740,750,780,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,750,760,790,3,2,"[0, 3, 0]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,750,760,790,5,2,"[1, 3, 1]","[2, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,750,760,790,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,750,760,790,1,0,"[0, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,760,770,800,1,6,"[0, 1, 0]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,760,770,800,5,6,"[2, 0, 3]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,760,770,800,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,760,770,800,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,770,780,810,2,6,"[0, 1, 1]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,770,780,810,2,6,"[0, 1, 1]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,770,780,810,2,0,"[0, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,770,780,810,5,0,"[3, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,780,790,820,4,10,"[1, 1, 2]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,780,790,820,2,10,"[0, 1, 1]","[0, 5, 5]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,780,790,820,4,0,"[4, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,780,790,820,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,790,800,830,0,1,"[0, 0, 0]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,790,800,830,4,1,"[1, 0, 3]","[1, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,790,800,830,3,0,"[1, 2]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,790,800,830,2,0,"[1, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,800,810,840,1,0,"[0, 1, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,800,810,840,4,0,"[1, 2, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,800,810,840,5,4,"[2, 3]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,800,810,840,2,4,"[1, 1]","[2, 2]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,810,820,850,2,0,"[1, 0, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,810,820,850,2,0,"[2, 0, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,810,820,850,3,8,"[3, 0]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,810,820,850,3,8,"[1, 2]","[4, 4]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,820,830,860,3,0,"[1, 1, 1]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,820,830,860,2,0,"[0, 2, 0]","[0, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,820,830,860,5,6,"[2, 3]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,820,830,860,1,6,"[0, 1]","[3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,830,840,870,2,3,"[1, 1, 0]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,830,840,870,1,3,"[1, 0, 0]","[3, 0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,830,840,870,2,0,"[2, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,830,840,870,3,0,"[3, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,840,850,880,0,2,"[0, 0, 0]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,840,850,880,2,2,"[0, 1, 1]","[0, 1, 1]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,840,850,880,3,0,"[0, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,840,850,880,5,0,"[4, 1]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+N,850,860,890,3,6,"[2, 0, 1]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+S,850,860,890,0,6,"[0, 0, 0]","[0, 3, 3]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+E,850,860,890,0,0,"[0, 0]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed
+W,850,860,890,5,0,"[2, 3]","[0, 0]",,missing_or_stale,intersection_1,delayed,101,fixed,protected_permissive,1,intersection_1:protected_permissive:delayed:101:fixed

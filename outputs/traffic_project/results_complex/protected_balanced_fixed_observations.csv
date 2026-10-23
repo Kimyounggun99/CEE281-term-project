@@ -1,0 +1,357 @@
+sensor_id,interval_start_s,interval_end_s,delivery_time_s,count,departure_count,lane_arrival_counts,lane_departure_counts,mean_speed_mps,quality_flag,intersection_id,scenario,seed,controller,left_mode,metrics_schema_version,run_id
+N,0,10,10,2,0,"[0, 1, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,0,10,10,7,0,"[1, 3, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,0,10,10,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,0,10,10,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,10,20,20,7,2,"[2, 3, 2]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,10,20,20,6,4,"[0, 1, 5]","[0, 2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,10,20,20,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,10,20,20,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,20,30,30,3,2,"[0, 1, 2]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,20,30,30,7,6,"[1, 3, 3]","[0, 2, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,20,30,30,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,20,30,30,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,30,40,40,3,1,"[2, 0, 1]","[0, 1, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,30,40,40,6,1,"[1, 1, 4]","[0, 0, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,30,40,40,1,2,"[1, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,30,40,40,0,2,"[0, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,40,50,50,5,0,"[1, 1, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,40,50,50,3,0,"[0, 1, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,40,50,50,5,6,"[2, 3]","[3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,40,50,50,1,4,"[0, 1]","[1, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,50,60,60,3,0,"[0, 0, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,50,60,60,8,0,"[0, 2, 6]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,50,60,60,5,5,"[1, 4]","[1, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,50,60,60,0,1,"[0, 0]","[0, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,60,70,70,4,1,"[0, 3, 1]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,60,70,70,5,1,"[0, 1, 4]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,60,70,70,2,2,"[1, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,60,70,70,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,70,80,80,8,3,"[2, 2, 4]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,70,80,80,8,2,"[2, 2, 4]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,70,80,80,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,70,80,80,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,80,90,90,12,3,"[1, 4, 7]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,80,90,90,5,2,"[1, 3, 1]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,80,90,90,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,80,90,90,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,90,100,100,7,8,"[0, 5, 2]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,90,100,100,7,6,"[1, 2, 4]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,90,100,100,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,90,100,100,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,100,110,110,2,8,"[1, 1, 0]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,100,110,110,7,8,"[2, 2, 3]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,100,110,110,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,100,110,110,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,110,120,120,4,8,"[0, 3, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,110,120,120,6,8,"[0, 1, 5]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,110,120,120,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,110,120,120,4,0,"[2, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,120,130,130,8,2,"[1, 3, 4]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,120,130,130,5,2,"[1, 1, 3]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,120,130,130,0,2,"[0, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,120,130,130,2,1,"[2, 0]","[0, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,130,140,140,6,0,"[1, 2, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,130,140,140,5,0,"[1, 1, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,130,140,140,1,6,"[1, 0]","[2, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,130,140,140,6,4,"[2, 4]","[0, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,140,150,150,4,0,"[1, 1, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,140,150,150,7,0,"[4, 1, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,140,150,150,4,0,"[1, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,140,150,150,1,2,"[1, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,150,160,160,3,2,"[2, 1, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,150,160,160,6,2,"[2, 1, 3]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,150,160,160,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,150,160,160,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,160,170,170,4,2,"[1, 0, 3]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,160,170,170,4,2,"[0, 1, 3]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,160,170,170,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,160,170,170,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,170,180,180,3,6,"[1, 1, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,170,180,180,2,6,"[2, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,170,180,180,4,0,"[1, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,170,180,180,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,180,190,190,2,6,"[0, 1, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,180,190,190,2,6,"[0, 1, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,180,190,190,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,180,190,190,6,0,"[2, 4]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,190,200,200,3,10,"[0, 1, 2]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,190,200,200,4,9,"[2, 2, 0]","[0, 4, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,190,200,200,4,0,"[1, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,190,200,200,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,200,210,210,1,0,"[0, 1, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,200,210,210,2,0,"[0, 0, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,200,210,210,9,2,"[4, 5]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,200,210,210,11,2,"[6, 5]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,210,220,220,2,0,"[0, 0, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,210,220,220,1,0,"[1, 0, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,210,220,220,3,8,"[1, 2]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,210,220,220,6,8,"[2, 4]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,220,230,230,1,0,"[0, 1, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,220,230,230,2,0,"[0, 1, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,220,230,230,1,5,"[0, 1]","[3, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,220,230,230,5,3,"[2, 3]","[1, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,230,240,240,4,1,"[1, 3, 0]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,230,240,240,3,1,"[2, 1, 0]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,230,240,240,4,0,"[1, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,230,240,240,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,240,250,250,4,2,"[0, 4, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,240,250,250,2,2,"[0, 1, 1]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,240,250,250,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,240,250,250,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,250,260,260,4,3,"[1, 2, 1]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,250,260,260,1,3,"[0, 1, 0]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,250,260,260,7,0,"[6, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,250,260,260,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,260,270,270,1,6,"[0, 0, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,260,270,270,4,6,"[3, 1, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,260,270,270,8,0,"[3, 5]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,260,270,270,4,0,"[3, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,270,280,280,2,8,"[0, 2, 0]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,270,280,280,5,8,"[1, 0, 4]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,270,280,280,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,270,280,280,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,280,290,290,4,10,"[0, 1, 3]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,280,290,290,4,5,"[2, 0, 2]","[0, 0, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,280,290,290,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,280,290,290,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,290,300,300,2,0,"[0, 1, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,290,300,300,1,0,"[0, 0, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,290,300,300,4,2,"[2, 2]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,290,300,300,1,1,"[0, 1]","[0, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,300,310,310,1,0,"[0, 1, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,300,310,310,4,0,"[1, 3, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,300,310,310,1,8,"[1, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,300,310,310,1,4,"[1, 0]","[0, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,310,320,320,7,0,"[0, 2, 5]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,310,320,320,2,0,"[0, 0, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,310,320,320,2,4,"[0, 2]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,310,320,320,1,3,"[0, 1]","[1, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,320,330,330,8,1,"[2, 2, 4]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,320,330,330,6,1,"[1, 3, 2]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,320,330,330,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,320,330,330,3,0,"[3, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,330,340,340,5,3,"[1, 1, 3]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,330,340,340,9,3,"[1, 3, 5]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,330,340,340,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,330,340,340,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,340,350,350,6,3,"[0, 4, 2]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,340,350,350,3,3,"[0, 1, 2]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,340,350,350,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,340,350,350,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,350,360,360,3,6,"[2, 0, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,350,360,360,8,6,"[3, 3, 2]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,350,360,360,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,350,360,360,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,360,370,370,9,8,"[1, 7, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,360,370,370,8,8,"[0, 4, 4]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,360,370,370,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,360,370,370,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,370,380,380,4,8,"[2, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,370,380,380,5,8,"[0, 2, 3]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,370,380,380,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,370,380,380,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,380,390,390,9,2,"[0, 2, 7]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,380,390,390,8,2,"[1, 2, 5]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,380,390,390,1,2,"[0, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,380,390,390,1,2,"[0, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,390,400,400,5,0,"[1, 3, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,390,400,400,8,0,"[1, 5, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,390,400,400,5,4,"[3, 2]","[0, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,390,400,400,1,8,"[0, 1]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,400,410,410,2,0,"[0, 0, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,400,410,410,5,0,"[0, 3, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,400,410,410,0,3,"[0, 0]","[1, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,400,410,410,1,4,"[0, 1]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,410,420,420,4,1,"[0, 2, 2]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,410,420,420,7,1,"[3, 4, 0]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,410,420,420,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,410,420,420,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,420,430,430,3,3,"[0, 2, 1]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,420,430,430,3,3,"[0, 0, 3]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,420,430,430,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,420,430,430,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,430,440,440,7,2,"[1, 2, 4]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,430,440,440,3,2,"[0, 2, 1]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,430,440,440,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,430,440,440,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,440,450,450,5,8,"[2, 1, 2]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,440,450,450,6,8,"[1, 2, 3]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,440,450,450,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,440,450,450,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,450,460,460,4,8,"[2, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,450,460,460,6,8,"[1, 3, 2]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,450,460,460,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,450,460,460,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,460,470,470,3,4,"[0, 3, 0]","[0, 2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,460,470,470,2,4,"[0, 1, 1]","[0, 2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,460,470,470,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,460,470,470,3,0,"[0, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,470,480,480,1,0,"[1, 0, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,470,480,480,4,0,"[0, 2, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,470,480,480,2,6,"[0, 2]","[3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,470,480,480,1,6,"[1, 0]","[3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,480,490,490,0,0,"[0, 0, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,480,490,490,2,0,"[0, 1, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,480,490,490,4,8,"[2, 2]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,480,490,490,1,8,"[0, 1]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,490,500,500,6,1,"[1, 2, 3]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,490,500,500,2,1,"[0, 2, 0]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,490,500,500,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,490,500,500,7,0,"[4, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,500,510,510,0,2,"[0, 0, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,500,510,510,2,2,"[2, 0, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,500,510,510,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,500,510,510,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,510,520,520,1,6,"[0, 0, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,510,520,520,0,6,"[0, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,510,520,520,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,510,520,520,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,520,530,530,2,6,"[1, 0, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,520,530,530,0,6,"[0, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,520,530,530,4,0,"[0, 4]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,520,530,530,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,530,540,540,0,10,"[0, 0, 0]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,530,540,540,2,10,"[1, 1, 0]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,530,540,540,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,530,540,540,6,0,"[3, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,540,550,550,4,0,"[0, 2, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,540,550,550,1,0,"[0, 0, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,540,550,550,2,2,"[1, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,540,550,550,5,2,"[1, 4]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,550,560,560,3,0,"[0, 1, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,550,560,560,3,0,"[0, 2, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,550,560,560,4,8,"[3, 1]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,550,560,560,1,8,"[1, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,560,570,570,2,0,"[1, 0, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,560,570,570,5,0,"[0, 5, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,560,570,570,4,6,"[3, 1]","[4, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,560,570,570,6,4,"[1, 5]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,570,580,580,2,1,"[0, 1, 1]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,570,580,580,3,1,"[1, 1, 1]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,570,580,580,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,570,580,580,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,580,590,590,3,3,"[1, 0, 2]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,580,590,590,4,3,"[1, 1, 2]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,580,590,590,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,580,590,590,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,590,600,600,1,3,"[0, 0, 1]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,590,600,600,5,3,"[0, 0, 5]","[1, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,590,600,600,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,590,600,600,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,600,610,610,6,6,"[1, 3, 2]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,600,610,610,1,6,"[0, 1, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,600,610,610,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,600,610,610,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,610,620,620,6,8,"[0, 3, 3]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,610,620,620,1,8,"[1, 0, 0]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,610,620,620,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,610,620,620,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,620,630,630,5,8,"[1, 3, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,620,630,630,4,8,"[0, 3, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,620,630,630,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,620,630,630,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,630,640,640,8,2,"[0, 5, 3]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,630,640,640,4,2,"[1, 1, 2]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,630,640,640,2,2,"[1, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,630,640,640,1,2,"[1, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,640,650,650,11,0,"[0, 5, 6]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,640,650,650,5,0,"[0, 1, 4]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,640,650,650,0,8,"[0, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,640,650,650,0,8,"[0, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,650,660,660,7,0,"[2, 3, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,650,660,660,5,0,"[1, 1, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,650,660,660,1,4,"[1, 0]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,650,660,660,0,4,"[0, 0]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,660,670,670,9,3,"[0, 4, 5]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,660,670,670,10,3,"[2, 4, 4]","[3, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,660,670,670,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,660,670,670,1,0,"[1, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,670,680,680,6,2,"[1, 0, 5]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,670,680,680,7,2,"[1, 6, 0]","[0, 1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,670,680,680,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,670,680,680,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,680,690,690,3,6,"[0, 2, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,680,690,690,9,6,"[0, 5, 4]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,680,690,690,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,680,690,690,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,690,700,700,4,8,"[0, 4, 0]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,690,700,700,2,8,"[0, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,690,700,700,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,690,700,700,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,700,710,710,6,10,"[1, 1, 4]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,700,710,710,7,10,"[1, 1, 5]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,700,710,710,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,700,710,710,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,710,720,720,5,0,"[1, 2, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,710,720,720,6,0,"[1, 4, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,710,720,720,2,2,"[1, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,710,720,720,1,2,"[1, 0]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,720,730,730,9,0,"[3, 4, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,720,730,730,6,0,"[2, 2, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,720,730,730,1,8,"[1, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,720,730,730,3,8,"[1, 2]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,730,740,740,5,0,"[0, 3, 2]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,730,740,740,5,0,"[0, 0, 5]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,730,740,740,1,4,"[1, 0]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,730,740,740,3,4,"[1, 2]","[2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,740,750,750,6,1,"[0, 1, 5]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,740,750,750,2,1,"[1, 0, 1]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,740,750,750,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,740,750,750,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,750,760,760,3,2,"[0, 3, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,750,760,760,5,2,"[1, 3, 1]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,750,760,760,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,750,760,760,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,760,770,770,1,4,"[0, 1, 0]","[0, 2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,760,770,770,5,4,"[2, 0, 3]","[0, 2, 2]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,760,770,770,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,760,770,770,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,770,780,780,2,8,"[0, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,770,780,780,2,8,"[0, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,770,780,780,2,0,"[0, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,770,780,780,5,0,"[3, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,780,790,790,4,8,"[1, 1, 2]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,780,790,790,2,8,"[0, 1, 1]","[0, 4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,780,790,790,4,0,"[4, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,780,790,790,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,790,800,800,0,6,"[0, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,790,800,800,4,6,"[1, 0, 3]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,790,800,800,3,0,"[1, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,790,800,800,2,0,"[1, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,800,810,810,1,0,"[0, 1, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,800,810,810,4,0,"[1, 2, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,800,810,810,5,6,"[2, 3]","[3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,800,810,810,2,6,"[1, 1]","[3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,810,820,820,2,0,"[1, 0, 1]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,810,820,820,2,0,"[2, 0, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,810,820,820,3,8,"[3, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,810,820,820,3,8,"[1, 2]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,820,830,830,3,1,"[1, 1, 1]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,820,830,830,2,1,"[0, 2, 0]","[1, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,820,830,830,5,0,"[2, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,820,830,830,1,0,"[0, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,830,840,840,2,2,"[1, 1, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,830,840,840,1,2,"[1, 0, 0]","[2, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,830,840,840,2,0,"[2, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,830,840,840,3,0,"[3, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,840,850,850,0,6,"[0, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,840,850,850,2,6,"[0, 1, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,840,850,850,3,0,"[0, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,840,850,850,5,0,"[4, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,850,860,860,3,6,"[2, 0, 1]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,850,860,860,0,6,"[0, 0, 0]","[0, 3, 3]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,850,860,860,0,0,"[0, 0]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,850,860,860,5,0,"[2, 3]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,860,870,870,3,10,"[0, 2, 1]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,860,870,870,3,10,"[0, 0, 3]","[0, 5, 5]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,860,870,870,3,0,"[2, 1]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,860,870,870,5,0,"[3, 2]","[0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,870,880,880,4,0,"[0, 1, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,870,880,880,6,0,"[1, 0, 5]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,870,880,880,4,2,"[2, 2]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,870,880,880,1,2,"[0, 1]","[1, 1]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+N,880,890,890,3,0,"[0, 0, 3]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+S,880,890,890,1,0,"[0, 1, 0]","[0, 0, 0]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+E,880,890,890,3,6,"[0, 3]","[2, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
+W,880,890,890,5,8,"[5, 0]","[4, 4]",,ok,intersection_1,balanced,101,fixed,protected,1,intersection_1:protected:balanced:101:fixed
